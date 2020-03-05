@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="2/10/2020 7:00:47 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="XFINITY-ACCESS"
+  DTS:CreatorName="XFINITY-ACCESS\Eder"
+  DTS:DTSID="{DBBE4ACF-DA77-4E10-B804-171428F756B0}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="15.0.2000.71"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="Package"
+  DTS:PackageType="5"
+  DTS:VersionGUID="{53BB0E21-267A-4A1F-9618-4284AB50AFB4}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:Variables />
+  <DTS:Executables />
+</DTS:Executable>
