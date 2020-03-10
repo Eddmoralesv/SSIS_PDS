@@ -32,6 +32,8 @@ SELECT p.PackageID
        dbo.PackageTaskLog AS ptl ON ptl.PackageLogID = pl.PackageLogID
  WHERE 1 = 1
        --AND BatchLogID = 3
+	   AND p.PackageName = 'SSIS_PDS_Template_em'
+
  ORDER BY ptl.StartDateTime DESC;
 
 
