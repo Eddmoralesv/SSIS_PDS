@@ -12,11 +12,23 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="SSIS_PDS_Template_em"
   DTS:PackageType="5"
-  DTS:VersionBuild="14"
-  DTS:VersionGUID="{1F7E7AD9-B1A9-4ABA-BC70-39165B85F8CB}">
+  DTS:VersionBuild="23"
+  DTS:VersionGUID="{292F376D-AF3B-45F4-BE16-B5AAB5451315}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[DFNB3]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{CACD74D5-51EA-48F5-B5E6-CBDE847AA570}"
+      DTS:ObjectName="DFNB3">
+      <DTS:PropertyExpression
+        DTS:Name="ConnectionString">@[User::conn_DFNB3]</DTS:PropertyExpression>
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=localhost;Initial Catalog=DFNB3;Provider=SQLNCLI11;Integrated Security=SSPI;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
     <DTS:ConnectionManager
       DTS:refId="Package.ConnectionManagers[SSIS_PDS]"
       DTS:CreationName="OLEDB"
@@ -72,6 +84,15 @@
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
+      DTS:DTSID="{3DA54AFA-349F-4149-A888-212D708D0018}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="conn_DFNB3">
+      <DTS:VariableValue
+        DTS:DataType="8">Data Source=localhost;Initial Catalog=DFNB3;Provider=SQLNCLI11;Integrated Security=SSPI;</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
       DTS:DTSID="{AEA47574-88EC-4B3A-ADBA-A1FEFE27BF65}"
       DTS:IncludeInDebugDump="6789"
       DTS:Namespace="User"
@@ -96,15 +117,6 @@
       DTS:ObjectName="strVariableValue">
       <DTS:VariableValue
         DTS:DataType="8">Unable to Convert to String</DTS:VariableValue>
-    </DTS:Variable>
-    <DTS:Variable
-      DTS:CreationName=""
-      DTS:DTSID="{3DA54AFA-349F-4149-A888-212D708D0018}"
-      DTS:IncludeInDebugDump="6789"
-      DTS:Namespace="User"
-      DTS:ObjectName="Variable">
-      <DTS:VariableValue
-        DTS:DataType="3">0</DTS:VariableValue>
     </DTS:Variable>
   </DTS:Variables>
   <DTS:Executables>
@@ -131,6 +143,29 @@
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
       DTS:ThreadHint="0">
       <DTS:Variables />
+      <DTS:EventHandlers>
+        <DTS:EventHandler
+          DTS:refId="Package\LogPackageEnd.EventHandlers[OnError]"
+          DTS:CreationName="OnError"
+          DTS:DTSID="{C0DFB5A5-1842-4A9A-B1F4-C4DC26D72B09}"
+          DTS:EventID="0"
+          DTS:EventName="OnError"
+          DTS:LocaleID="-1">
+          <DTS:Variables>
+            <DTS:Variable
+              DTS:CreationName=""
+              DTS:Description="The propagate property of the event"
+              DTS:DTSID="{5FA14289-8830-438E-9FC0-0D446A3A20F6}"
+              DTS:IncludeInDebugDump="6789"
+              DTS:Namespace="System"
+              DTS:ObjectName="Propagate">
+              <DTS:VariableValue
+                DTS:DataType="11">-1</DTS:VariableValue>
+            </DTS:Variable>
+          </DTS:Variables>
+          <DTS:Executables />
+        </DTS:EventHandler>
+      </DTS:EventHandlers>
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
           SQLTask:Connection="{D9F3CADE-4BFE-45A2-B370-61AD79822E19}"
@@ -188,7 +223,1804 @@
               <DTS:Variables />
               <DTS:ObjectData>
                 <pipeline
-                  version="1" />
+                  version="1">
+                  <components>
+                    <component
+                      refId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\DFNB3"
+                      componentClassID="Microsoft.OLEDBSource"
+                      contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+                      description="OLE DB Source"
+                      name="DFNB3"
+                      usesDispositions="true"
+                      version="7">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                          name="CommandTimeout">0</property>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the name of the database object used to open a rowset."
+                          name="OpenRowset">[dbo].[stg_p1]</property>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the variable that contains the name of the database object used to open a rowset."
+                          name="OpenRowsetVariable"></property>
+                        <property
+                          dataType="System.String"
+                          description="The SQL command to be executed."
+                          name="SqlCommand"
+                          UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                        <property
+                          dataType="System.String"
+                          description="The variable that contains the SQL command to be executed."
+                          name="SqlCommandVariable"></property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the column code page to use when code page information is unavailable from the data source."
+                          name="DefaultCodePage">1252</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Forces the use of the DefaultCodePage property value when describing character data."
+                          name="AlwaysUseDefaultCodePage">false</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the mode used to access the database."
+                          name="AccessMode"
+                          typeConverter="AccessMode">0</property>
+                        <property
+                          dataType="System.String"
+                          description="The mappings between the parameters in the SQL command and variables."
+                          name="ParameterMapping"></property>
+                      </properties>
+                      <connections>
+                        <connection
+                          refId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\DFNB3.Connections[OleDbConnection]"
+                          connectionManagerID="Package.ConnectionManagers[DFNB3]"
+                          connectionManagerRefId="Package.ConnectionManagers[DFNB3]"
+                          description="The OLE DB runtime connection used to access the database."
+                          name="OleDbConnection" />
+                      </connections>
+                      <outputs>
+                        <output
+                          refId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\DFNB3.Outputs[OLE DB Source Output]"
+                          name="OLE DB Source Output">
+                          <outputColumns>
+                            <outputColumn
+                              refId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\DFNB3.Outputs[OLE DB Source Output].Columns[acct_id]"
+                              dataType="i4"
+                              errorOrTruncationOperation="Conversion"
+                              errorRowDisposition="FailComponent"
+                              externalMetadataColumnId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\DFNB3.Outputs[OLE DB Source Output].ExternalColumns[acct_id]"
+                              lineageId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\DFNB3.Outputs[OLE DB Source Output].Columns[acct_id]"
+                              name="acct_id"
+                              truncationRowDisposition="FailComponent" />
+                            <outputColumn
+                              refId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\DFNB3.Outputs[OLE DB Source Output].Columns[cust_id]"
+                              dataType="i2"
+                              errorOrTruncationOperation="Conversion"
+                              errorRowDisposition="FailComponent"
+                              externalMetadataColumnId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\DFNB3.Outputs[OLE DB Source Output].ExternalColumns[cust_id]"
+                              lineageId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\DFNB3.Outputs[OLE DB Source Output].Columns[cust_id]"
+                              name="cust_id"
+                              truncationRowDisposition="FailComponent" />
+                            <outputColumn
+                              refId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\DFNB3.Outputs[OLE DB Source Output].Columns[acct_cust_role_id]"
+                              dataType="i2"
+                              errorOrTruncationOperation="Conversion"
+                              errorRowDisposition="FailComponent"
+                              externalMetadataColumnId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\DFNB3.Outputs[OLE DB Source Output].ExternalColumns[acct_cust_role_id]"
+                              lineageId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\DFNB3.Outputs[OLE DB Source Output].Columns[acct_cust_role_id]"
+                              name="acct_cust_role_id"
+                              truncationRowDisposition="FailComponent" />
+                            <outputColumn
+                              refId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\DFNB3.Outputs[OLE DB Source Output].Columns[acct_id2]"
+                              dataType="i4"
+                              errorOrTruncationOperation="Conversion"
+                              errorRowDisposition="FailComponent"
+                              externalMetadataColumnId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\DFNB3.Outputs[OLE DB Source Output].ExternalColumns[acct_id2]"
+                              lineageId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\DFNB3.Outputs[OLE DB Source Output].Columns[acct_id2]"
+                              name="acct_id2"
+                              truncationRowDisposition="FailComponent" />
+                            <outputColumn
+                              refId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\DFNB3.Outputs[OLE DB Source Output].Columns[prod_id]"
+                              dataType="i2"
+                              errorOrTruncationOperation="Conversion"
+                              errorRowDisposition="FailComponent"
+                              externalMetadataColumnId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\DFNB3.Outputs[OLE DB Source Output].ExternalColumns[prod_id]"
+                              lineageId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\DFNB3.Outputs[OLE DB Source Output].Columns[prod_id]"
+                              name="prod_id"
+                              truncationRowDisposition="FailComponent" />
+                            <outputColumn
+                              refId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\DFNB3.Outputs[OLE DB Source Output].Columns[open_date]"
+                              dataType="dbDate"
+                              errorOrTruncationOperation="Conversion"
+                              errorRowDisposition="FailComponent"
+                              externalMetadataColumnId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\DFNB3.Outputs[OLE DB Source Output].ExternalColumns[open_date]"
+                              lineageId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\DFNB3.Outputs[OLE DB Source Output].Columns[open_date]"
+                              name="open_date"
+                              truncationRowDisposition="FailComponent" />
+                            <outputColumn
+                              refId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\DFNB3.Outputs[OLE DB Source Output].Columns[close_date]"
+                              dataType="dbDate"
+                              errorOrTruncationOperation="Conversion"
+                              errorRowDisposition="FailComponent"
+                              externalMetadataColumnId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\DFNB3.Outputs[OLE DB Source Output].ExternalColumns[close_date]"
+                              lineageId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\DFNB3.Outputs[OLE DB Source Output].Columns[close_date]"
+                              name="close_date"
+                              truncationRowDisposition="FailComponent" />
+                            <outputColumn
+                              refId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\DFNB3.Outputs[OLE DB Source Output].Columns[open_close_code]"
+                              codePage="1252"
+                              dataType="str"
+                              errorOrTruncationOperation="Conversion"
+                              errorRowDisposition="FailComponent"
+                              externalMetadataColumnId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\DFNB3.Outputs[OLE DB Source Output].ExternalColumns[open_close_code]"
+                              length="1"
+                              lineageId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\DFNB3.Outputs[OLE DB Source Output].Columns[open_close_code]"
+                              name="open_close_code"
+                              truncationRowDisposition="FailComponent" />
+                            <outputColumn
+                              refId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\DFNB3.Outputs[OLE DB Source Output].Columns[branch_id]"
+                              dataType="i2"
+                              errorOrTruncationOperation="Conversion"
+                              errorRowDisposition="FailComponent"
+                              externalMetadataColumnId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\DFNB3.Outputs[OLE DB Source Output].ExternalColumns[branch_id]"
+                              lineageId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\DFNB3.Outputs[OLE DB Source Output].Columns[branch_id]"
+                              name="branch_id"
+                              truncationRowDisposition="FailComponent" />
+                            <outputColumn
+                              refId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\DFNB3.Outputs[OLE DB Source Output].Columns[acct_rel_id]"
+                              dataType="i2"
+                              errorOrTruncationOperation="Conversion"
+                              errorRowDisposition="FailComponent"
+                              externalMetadataColumnId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\DFNB3.Outputs[OLE DB Source Output].ExternalColumns[acct_rel_id]"
+                              lineageId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\DFNB3.Outputs[OLE DB Source Output].Columns[acct_rel_id]"
+                              name="acct_rel_id"
+                              truncationRowDisposition="FailComponent" />
+                            <outputColumn
+                              refId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\DFNB3.Outputs[OLE DB Source Output].Columns[pri_cust_id]"
+                              dataType="i2"
+                              errorOrTruncationOperation="Conversion"
+                              errorRowDisposition="FailComponent"
+                              externalMetadataColumnId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\DFNB3.Outputs[OLE DB Source Output].ExternalColumns[pri_cust_id]"
+                              lineageId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\DFNB3.Outputs[OLE DB Source Output].Columns[pri_cust_id]"
+                              name="pri_cust_id"
+                              truncationRowDisposition="FailComponent" />
+                            <outputColumn
+                              refId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\DFNB3.Outputs[OLE DB Source Output].Columns[loan_amt]"
+                              dataType="numeric"
+                              errorOrTruncationOperation="Conversion"
+                              errorRowDisposition="FailComponent"
+                              externalMetadataColumnId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\DFNB3.Outputs[OLE DB Source Output].ExternalColumns[loan_amt]"
+                              lineageId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\DFNB3.Outputs[OLE DB Source Output].Columns[loan_amt]"
+                              name="loan_amt"
+                              precision="20"
+                              scale="4"
+                              truncationRowDisposition="FailComponent" />
+                            <outputColumn
+                              refId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\DFNB3.Outputs[OLE DB Source Output].Columns[acct_branch_id]"
+                              dataType="i2"
+                              errorOrTruncationOperation="Conversion"
+                              errorRowDisposition="FailComponent"
+                              externalMetadataColumnId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\DFNB3.Outputs[OLE DB Source Output].ExternalColumns[acct_branch_id]"
+                              lineageId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\DFNB3.Outputs[OLE DB Source Output].Columns[acct_branch_id]"
+                              name="acct_branch_id"
+                              truncationRowDisposition="FailComponent" />
+                            <outputColumn
+                              refId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\DFNB3.Outputs[OLE DB Source Output].Columns[acct_branch_code]"
+                              codePage="1252"
+                              dataType="str"
+                              errorOrTruncationOperation="Conversion"
+                              errorRowDisposition="FailComponent"
+                              externalMetadataColumnId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\DFNB3.Outputs[OLE DB Source Output].ExternalColumns[acct_branch_code]"
+                              length="5"
+                              lineageId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\DFNB3.Outputs[OLE DB Source Output].Columns[acct_branch_code]"
+                              name="acct_branch_code"
+                              truncationRowDisposition="FailComponent" />
+                            <outputColumn
+                              refId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\DFNB3.Outputs[OLE DB Source Output].Columns[acct_branch_desc]"
+                              codePage="1252"
+                              dataType="str"
+                              errorOrTruncationOperation="Conversion"
+                              errorRowDisposition="FailComponent"
+                              externalMetadataColumnId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\DFNB3.Outputs[OLE DB Source Output].ExternalColumns[acct_branch_desc]"
+                              length="100"
+                              lineageId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\DFNB3.Outputs[OLE DB Source Output].Columns[acct_branch_desc]"
+                              name="acct_branch_desc"
+                              truncationRowDisposition="FailComponent" />
+                            <outputColumn
+                              refId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\DFNB3.Outputs[OLE DB Source Output].Columns[acct_region_id]"
+                              dataType="i4"
+                              errorOrTruncationOperation="Conversion"
+                              errorRowDisposition="FailComponent"
+                              externalMetadataColumnId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\DFNB3.Outputs[OLE DB Source Output].ExternalColumns[acct_region_id]"
+                              lineageId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\DFNB3.Outputs[OLE DB Source Output].Columns[acct_region_id]"
+                              name="acct_region_id"
+                              truncationRowDisposition="FailComponent" />
+                            <outputColumn
+                              refId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\DFNB3.Outputs[OLE DB Source Output].Columns[acct_area_id]"
+                              dataType="i4"
+                              errorOrTruncationOperation="Conversion"
+                              errorRowDisposition="FailComponent"
+                              externalMetadataColumnId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\DFNB3.Outputs[OLE DB Source Output].ExternalColumns[acct_area_id]"
+                              lineageId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\DFNB3.Outputs[OLE DB Source Output].Columns[acct_area_id]"
+                              name="acct_area_id"
+                              truncationRowDisposition="FailComponent" />
+                            <outputColumn
+                              refId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\DFNB3.Outputs[OLE DB Source Output].Columns[acct_branch_lat]"
+                              dataType="numeric"
+                              errorOrTruncationOperation="Conversion"
+                              errorRowDisposition="FailComponent"
+                              externalMetadataColumnId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\DFNB3.Outputs[OLE DB Source Output].ExternalColumns[acct_branch_lat]"
+                              lineageId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\DFNB3.Outputs[OLE DB Source Output].Columns[acct_branch_lat]"
+                              name="acct_branch_lat"
+                              precision="16"
+                              scale="12"
+                              truncationRowDisposition="FailComponent" />
+                            <outputColumn
+                              refId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\DFNB3.Outputs[OLE DB Source Output].Columns[acct_branch_lon]"
+                              dataType="numeric"
+                              errorOrTruncationOperation="Conversion"
+                              errorRowDisposition="FailComponent"
+                              externalMetadataColumnId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\DFNB3.Outputs[OLE DB Source Output].ExternalColumns[acct_branch_lon]"
+                              lineageId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\DFNB3.Outputs[OLE DB Source Output].Columns[acct_branch_lon]"
+                              name="acct_branch_lon"
+                              precision="16"
+                              scale="12"
+                              truncationRowDisposition="FailComponent" />
+                            <outputColumn
+                              refId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\DFNB3.Outputs[OLE DB Source Output].Columns[acct_branch_add_id]"
+                              dataType="i4"
+                              errorOrTruncationOperation="Conversion"
+                              errorRowDisposition="FailComponent"
+                              externalMetadataColumnId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\DFNB3.Outputs[OLE DB Source Output].ExternalColumns[acct_branch_add_id]"
+                              lineageId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\DFNB3.Outputs[OLE DB Source Output].Columns[acct_branch_add_id]"
+                              name="acct_branch_add_id"
+                              truncationRowDisposition="FailComponent" />
+                            <outputColumn
+                              refId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\DFNB3.Outputs[OLE DB Source Output].Columns[acct_branch_add_lat]"
+                              dataType="numeric"
+                              errorOrTruncationOperation="Conversion"
+                              errorRowDisposition="FailComponent"
+                              externalMetadataColumnId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\DFNB3.Outputs[OLE DB Source Output].ExternalColumns[acct_branch_add_lat]"
+                              lineageId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\DFNB3.Outputs[OLE DB Source Output].Columns[acct_branch_add_lat]"
+                              name="acct_branch_add_lat"
+                              precision="16"
+                              scale="12"
+                              truncationRowDisposition="FailComponent" />
+                            <outputColumn
+                              refId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\DFNB3.Outputs[OLE DB Source Output].Columns[acct_branch_add_lon]"
+                              dataType="numeric"
+                              errorOrTruncationOperation="Conversion"
+                              errorRowDisposition="FailComponent"
+                              externalMetadataColumnId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\DFNB3.Outputs[OLE DB Source Output].ExternalColumns[acct_branch_add_lon]"
+                              lineageId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\DFNB3.Outputs[OLE DB Source Output].Columns[acct_branch_add_lon]"
+                              name="acct_branch_add_lon"
+                              precision="16"
+                              scale="12"
+                              truncationRowDisposition="FailComponent" />
+                            <outputColumn
+                              refId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\DFNB3.Outputs[OLE DB Source Output].Columns[acct_branch_add_type]"
+                              codePage="1252"
+                              dataType="str"
+                              errorOrTruncationOperation="Conversion"
+                              errorRowDisposition="FailComponent"
+                              externalMetadataColumnId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\DFNB3.Outputs[OLE DB Source Output].ExternalColumns[acct_branch_add_type]"
+                              length="1"
+                              lineageId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\DFNB3.Outputs[OLE DB Source Output].Columns[acct_branch_add_type]"
+                              name="acct_branch_add_type"
+                              truncationRowDisposition="FailComponent" />
+                            <outputColumn
+                              refId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\DFNB3.Outputs[OLE DB Source Output].Columns[cust_id2]"
+                              dataType="i2"
+                              errorOrTruncationOperation="Conversion"
+                              errorRowDisposition="FailComponent"
+                              externalMetadataColumnId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\DFNB3.Outputs[OLE DB Source Output].ExternalColumns[cust_id2]"
+                              lineageId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\DFNB3.Outputs[OLE DB Source Output].Columns[cust_id2]"
+                              name="cust_id2"
+                              truncationRowDisposition="FailComponent" />
+                            <outputColumn
+                              refId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\DFNB3.Outputs[OLE DB Source Output].Columns[last_name]"
+                              codePage="1252"
+                              dataType="str"
+                              errorOrTruncationOperation="Conversion"
+                              errorRowDisposition="FailComponent"
+                              externalMetadataColumnId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\DFNB3.Outputs[OLE DB Source Output].ExternalColumns[last_name]"
+                              length="100"
+                              lineageId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\DFNB3.Outputs[OLE DB Source Output].Columns[last_name]"
+                              name="last_name"
+                              truncationRowDisposition="FailComponent" />
+                            <outputColumn
+                              refId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\DFNB3.Outputs[OLE DB Source Output].Columns[first_name]"
+                              codePage="1252"
+                              dataType="str"
+                              errorOrTruncationOperation="Conversion"
+                              errorRowDisposition="FailComponent"
+                              externalMetadataColumnId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\DFNB3.Outputs[OLE DB Source Output].ExternalColumns[first_name]"
+                              length="100"
+                              lineageId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\DFNB3.Outputs[OLE DB Source Output].Columns[first_name]"
+                              name="first_name"
+                              truncationRowDisposition="FailComponent" />
+                            <outputColumn
+                              refId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\DFNB3.Outputs[OLE DB Source Output].Columns[gender]"
+                              codePage="1252"
+                              dataType="str"
+                              errorOrTruncationOperation="Conversion"
+                              errorRowDisposition="FailComponent"
+                              externalMetadataColumnId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\DFNB3.Outputs[OLE DB Source Output].ExternalColumns[gender]"
+                              length="1"
+                              lineageId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\DFNB3.Outputs[OLE DB Source Output].Columns[gender]"
+                              name="gender"
+                              truncationRowDisposition="FailComponent" />
+                            <outputColumn
+                              refId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\DFNB3.Outputs[OLE DB Source Output].Columns[birth_date]"
+                              dataType="dbDate"
+                              errorOrTruncationOperation="Conversion"
+                              errorRowDisposition="FailComponent"
+                              externalMetadataColumnId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\DFNB3.Outputs[OLE DB Source Output].ExternalColumns[birth_date]"
+                              lineageId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\DFNB3.Outputs[OLE DB Source Output].Columns[birth_date]"
+                              name="birth_date"
+                              truncationRowDisposition="FailComponent" />
+                            <outputColumn
+                              refId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\DFNB3.Outputs[OLE DB Source Output].Columns[cust_since_date]"
+                              dataType="dbDate"
+                              errorOrTruncationOperation="Conversion"
+                              errorRowDisposition="FailComponent"
+                              externalMetadataColumnId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\DFNB3.Outputs[OLE DB Source Output].ExternalColumns[cust_since_date]"
+                              lineageId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\DFNB3.Outputs[OLE DB Source Output].Columns[cust_since_date]"
+                              name="cust_since_date"
+                              truncationRowDisposition="FailComponent" />
+                            <outputColumn
+                              refId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\DFNB3.Outputs[OLE DB Source Output].Columns[pri_branch_id]"
+                              dataType="i2"
+                              errorOrTruncationOperation="Conversion"
+                              errorRowDisposition="FailComponent"
+                              externalMetadataColumnId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\DFNB3.Outputs[OLE DB Source Output].ExternalColumns[pri_branch_id]"
+                              lineageId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\DFNB3.Outputs[OLE DB Source Output].Columns[pri_branch_id]"
+                              name="pri_branch_id"
+                              truncationRowDisposition="FailComponent" />
+                            <outputColumn
+                              refId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\DFNB3.Outputs[OLE DB Source Output].Columns[cust_pri_branch_dist]"
+                              dataType="numeric"
+                              errorOrTruncationOperation="Conversion"
+                              errorRowDisposition="FailComponent"
+                              externalMetadataColumnId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\DFNB3.Outputs[OLE DB Source Output].ExternalColumns[cust_pri_branch_dist]"
+                              lineageId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\DFNB3.Outputs[OLE DB Source Output].Columns[cust_pri_branch_dist]"
+                              name="cust_pri_branch_dist"
+                              precision="7"
+                              scale="2"
+                              truncationRowDisposition="FailComponent" />
+                            <outputColumn
+                              refId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\DFNB3.Outputs[OLE DB Source Output].Columns[cust_lat]"
+                              dataType="numeric"
+                              errorOrTruncationOperation="Conversion"
+                              errorRowDisposition="FailComponent"
+                              externalMetadataColumnId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\DFNB3.Outputs[OLE DB Source Output].ExternalColumns[cust_lat]"
+                              lineageId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\DFNB3.Outputs[OLE DB Source Output].Columns[cust_lat]"
+                              name="cust_lat"
+                              precision="16"
+                              scale="12"
+                              truncationRowDisposition="FailComponent" />
+                            <outputColumn
+                              refId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\DFNB3.Outputs[OLE DB Source Output].Columns[cust_lon]"
+                              dataType="numeric"
+                              errorOrTruncationOperation="Conversion"
+                              errorRowDisposition="FailComponent"
+                              externalMetadataColumnId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\DFNB3.Outputs[OLE DB Source Output].ExternalColumns[cust_lon]"
+                              lineageId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\DFNB3.Outputs[OLE DB Source Output].Columns[cust_lon]"
+                              name="cust_lon"
+                              precision="16"
+                              scale="12"
+                              truncationRowDisposition="FailComponent" />
+                            <outputColumn
+                              refId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\DFNB3.Outputs[OLE DB Source Output].Columns[cust_rel_id]"
+                              dataType="i2"
+                              errorOrTruncationOperation="Conversion"
+                              errorRowDisposition="FailComponent"
+                              externalMetadataColumnId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\DFNB3.Outputs[OLE DB Source Output].ExternalColumns[cust_rel_id]"
+                              lineageId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\DFNB3.Outputs[OLE DB Source Output].Columns[cust_rel_id]"
+                              name="cust_rel_id"
+                              truncationRowDisposition="FailComponent" />
+                            <outputColumn
+                              refId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\DFNB3.Outputs[OLE DB Source Output].Columns[cust_add_id]"
+                              dataType="i4"
+                              errorOrTruncationOperation="Conversion"
+                              errorRowDisposition="FailComponent"
+                              externalMetadataColumnId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\DFNB3.Outputs[OLE DB Source Output].ExternalColumns[cust_add_id]"
+                              lineageId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\DFNB3.Outputs[OLE DB Source Output].Columns[cust_add_id]"
+                              name="cust_add_id"
+                              truncationRowDisposition="FailComponent" />
+                            <outputColumn
+                              refId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\DFNB3.Outputs[OLE DB Source Output].Columns[cust_add_lat]"
+                              dataType="numeric"
+                              errorOrTruncationOperation="Conversion"
+                              errorRowDisposition="FailComponent"
+                              externalMetadataColumnId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\DFNB3.Outputs[OLE DB Source Output].ExternalColumns[cust_add_lat]"
+                              lineageId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\DFNB3.Outputs[OLE DB Source Output].Columns[cust_add_lat]"
+                              name="cust_add_lat"
+                              precision="16"
+                              scale="12"
+                              truncationRowDisposition="FailComponent" />
+                            <outputColumn
+                              refId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\DFNB3.Outputs[OLE DB Source Output].Columns[cust_add_lon]"
+                              dataType="numeric"
+                              errorOrTruncationOperation="Conversion"
+                              errorRowDisposition="FailComponent"
+                              externalMetadataColumnId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\DFNB3.Outputs[OLE DB Source Output].ExternalColumns[cust_add_lon]"
+                              lineageId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\DFNB3.Outputs[OLE DB Source Output].Columns[cust_add_lon]"
+                              name="cust_add_lon"
+                              precision="16"
+                              scale="12"
+                              truncationRowDisposition="FailComponent" />
+                            <outputColumn
+                              refId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\DFNB3.Outputs[OLE DB Source Output].Columns[cust_add_type]"
+                              codePage="1252"
+                              dataType="str"
+                              errorOrTruncationOperation="Conversion"
+                              errorRowDisposition="FailComponent"
+                              externalMetadataColumnId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\DFNB3.Outputs[OLE DB Source Output].ExternalColumns[cust_add_type]"
+                              length="1"
+                              lineageId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\DFNB3.Outputs[OLE DB Source Output].Columns[cust_add_type]"
+                              name="cust_add_type"
+                              truncationRowDisposition="FailComponent" />
+                            <outputColumn
+                              refId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\DFNB3.Outputs[OLE DB Source Output].Columns[as_of_date]"
+                              dataType="dbDate"
+                              errorOrTruncationOperation="Conversion"
+                              errorRowDisposition="FailComponent"
+                              externalMetadataColumnId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\DFNB3.Outputs[OLE DB Source Output].ExternalColumns[as_of_date]"
+                              lineageId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\DFNB3.Outputs[OLE DB Source Output].Columns[as_of_date]"
+                              name="as_of_date"
+                              truncationRowDisposition="FailComponent" />
+                            <outputColumn
+                              refId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\DFNB3.Outputs[OLE DB Source Output].Columns[acct_id3]"
+                              dataType="i4"
+                              errorOrTruncationOperation="Conversion"
+                              errorRowDisposition="FailComponent"
+                              externalMetadataColumnId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\DFNB3.Outputs[OLE DB Source Output].ExternalColumns[acct_id3]"
+                              lineageId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\DFNB3.Outputs[OLE DB Source Output].Columns[acct_id3]"
+                              name="acct_id3"
+                              truncationRowDisposition="FailComponent" />
+                            <outputColumn
+                              refId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\DFNB3.Outputs[OLE DB Source Output].Columns[cur_bal]"
+                              dataType="numeric"
+                              errorOrTruncationOperation="Conversion"
+                              errorRowDisposition="FailComponent"
+                              externalMetadataColumnId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\DFNB3.Outputs[OLE DB Source Output].ExternalColumns[cur_bal]"
+                              lineageId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\DFNB3.Outputs[OLE DB Source Output].Columns[cur_bal]"
+                              name="cur_bal"
+                              precision="20"
+                              scale="4"
+                              truncationRowDisposition="FailComponent" />
+                          </outputColumns>
+                          <externalMetadataColumns
+                            isUsed="True">
+                            <externalMetadataColumn
+                              refId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\DFNB3.Outputs[OLE DB Source Output].ExternalColumns[acct_id]"
+                              dataType="i4"
+                              name="acct_id" />
+                            <externalMetadataColumn
+                              refId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\DFNB3.Outputs[OLE DB Source Output].ExternalColumns[cust_id]"
+                              dataType="i2"
+                              name="cust_id" />
+                            <externalMetadataColumn
+                              refId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\DFNB3.Outputs[OLE DB Source Output].ExternalColumns[acct_cust_role_id]"
+                              dataType="i2"
+                              name="acct_cust_role_id" />
+                            <externalMetadataColumn
+                              refId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\DFNB3.Outputs[OLE DB Source Output].ExternalColumns[acct_id2]"
+                              dataType="i4"
+                              name="acct_id2" />
+                            <externalMetadataColumn
+                              refId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\DFNB3.Outputs[OLE DB Source Output].ExternalColumns[prod_id]"
+                              dataType="i2"
+                              name="prod_id" />
+                            <externalMetadataColumn
+                              refId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\DFNB3.Outputs[OLE DB Source Output].ExternalColumns[open_date]"
+                              dataType="dbDate"
+                              name="open_date" />
+                            <externalMetadataColumn
+                              refId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\DFNB3.Outputs[OLE DB Source Output].ExternalColumns[close_date]"
+                              dataType="dbDate"
+                              name="close_date" />
+                            <externalMetadataColumn
+                              refId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\DFNB3.Outputs[OLE DB Source Output].ExternalColumns[open_close_code]"
+                              codePage="1252"
+                              dataType="str"
+                              length="1"
+                              name="open_close_code" />
+                            <externalMetadataColumn
+                              refId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\DFNB3.Outputs[OLE DB Source Output].ExternalColumns[branch_id]"
+                              dataType="i2"
+                              name="branch_id" />
+                            <externalMetadataColumn
+                              refId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\DFNB3.Outputs[OLE DB Source Output].ExternalColumns[acct_rel_id]"
+                              dataType="i2"
+                              name="acct_rel_id" />
+                            <externalMetadataColumn
+                              refId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\DFNB3.Outputs[OLE DB Source Output].ExternalColumns[pri_cust_id]"
+                              dataType="i2"
+                              name="pri_cust_id" />
+                            <externalMetadataColumn
+                              refId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\DFNB3.Outputs[OLE DB Source Output].ExternalColumns[loan_amt]"
+                              dataType="numeric"
+                              name="loan_amt"
+                              precision="20"
+                              scale="4" />
+                            <externalMetadataColumn
+                              refId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\DFNB3.Outputs[OLE DB Source Output].ExternalColumns[acct_branch_id]"
+                              dataType="i2"
+                              name="acct_branch_id" />
+                            <externalMetadataColumn
+                              refId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\DFNB3.Outputs[OLE DB Source Output].ExternalColumns[acct_branch_code]"
+                              codePage="1252"
+                              dataType="str"
+                              length="5"
+                              name="acct_branch_code" />
+                            <externalMetadataColumn
+                              refId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\DFNB3.Outputs[OLE DB Source Output].ExternalColumns[acct_branch_desc]"
+                              codePage="1252"
+                              dataType="str"
+                              length="100"
+                              name="acct_branch_desc" />
+                            <externalMetadataColumn
+                              refId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\DFNB3.Outputs[OLE DB Source Output].ExternalColumns[acct_region_id]"
+                              dataType="i4"
+                              name="acct_region_id" />
+                            <externalMetadataColumn
+                              refId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\DFNB3.Outputs[OLE DB Source Output].ExternalColumns[acct_area_id]"
+                              dataType="i4"
+                              name="acct_area_id" />
+                            <externalMetadataColumn
+                              refId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\DFNB3.Outputs[OLE DB Source Output].ExternalColumns[acct_branch_lat]"
+                              dataType="numeric"
+                              name="acct_branch_lat"
+                              precision="16"
+                              scale="12" />
+                            <externalMetadataColumn
+                              refId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\DFNB3.Outputs[OLE DB Source Output].ExternalColumns[acct_branch_lon]"
+                              dataType="numeric"
+                              name="acct_branch_lon"
+                              precision="16"
+                              scale="12" />
+                            <externalMetadataColumn
+                              refId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\DFNB3.Outputs[OLE DB Source Output].ExternalColumns[acct_branch_add_id]"
+                              dataType="i4"
+                              name="acct_branch_add_id" />
+                            <externalMetadataColumn
+                              refId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\DFNB3.Outputs[OLE DB Source Output].ExternalColumns[acct_branch_add_lat]"
+                              dataType="numeric"
+                              name="acct_branch_add_lat"
+                              precision="16"
+                              scale="12" />
+                            <externalMetadataColumn
+                              refId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\DFNB3.Outputs[OLE DB Source Output].ExternalColumns[acct_branch_add_lon]"
+                              dataType="numeric"
+                              name="acct_branch_add_lon"
+                              precision="16"
+                              scale="12" />
+                            <externalMetadataColumn
+                              refId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\DFNB3.Outputs[OLE DB Source Output].ExternalColumns[acct_branch_add_type]"
+                              codePage="1252"
+                              dataType="str"
+                              length="1"
+                              name="acct_branch_add_type" />
+                            <externalMetadataColumn
+                              refId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\DFNB3.Outputs[OLE DB Source Output].ExternalColumns[cust_id2]"
+                              dataType="i2"
+                              name="cust_id2" />
+                            <externalMetadataColumn
+                              refId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\DFNB3.Outputs[OLE DB Source Output].ExternalColumns[last_name]"
+                              codePage="1252"
+                              dataType="str"
+                              length="100"
+                              name="last_name" />
+                            <externalMetadataColumn
+                              refId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\DFNB3.Outputs[OLE DB Source Output].ExternalColumns[first_name]"
+                              codePage="1252"
+                              dataType="str"
+                              length="100"
+                              name="first_name" />
+                            <externalMetadataColumn
+                              refId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\DFNB3.Outputs[OLE DB Source Output].ExternalColumns[gender]"
+                              codePage="1252"
+                              dataType="str"
+                              length="1"
+                              name="gender" />
+                            <externalMetadataColumn
+                              refId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\DFNB3.Outputs[OLE DB Source Output].ExternalColumns[birth_date]"
+                              dataType="dbDate"
+                              name="birth_date" />
+                            <externalMetadataColumn
+                              refId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\DFNB3.Outputs[OLE DB Source Output].ExternalColumns[cust_since_date]"
+                              dataType="dbDate"
+                              name="cust_since_date" />
+                            <externalMetadataColumn
+                              refId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\DFNB3.Outputs[OLE DB Source Output].ExternalColumns[pri_branch_id]"
+                              dataType="i2"
+                              name="pri_branch_id" />
+                            <externalMetadataColumn
+                              refId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\DFNB3.Outputs[OLE DB Source Output].ExternalColumns[cust_pri_branch_dist]"
+                              dataType="numeric"
+                              name="cust_pri_branch_dist"
+                              precision="7"
+                              scale="2" />
+                            <externalMetadataColumn
+                              refId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\DFNB3.Outputs[OLE DB Source Output].ExternalColumns[cust_lat]"
+                              dataType="numeric"
+                              name="cust_lat"
+                              precision="16"
+                              scale="12" />
+                            <externalMetadataColumn
+                              refId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\DFNB3.Outputs[OLE DB Source Output].ExternalColumns[cust_lon]"
+                              dataType="numeric"
+                              name="cust_lon"
+                              precision="16"
+                              scale="12" />
+                            <externalMetadataColumn
+                              refId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\DFNB3.Outputs[OLE DB Source Output].ExternalColumns[cust_rel_id]"
+                              dataType="i2"
+                              name="cust_rel_id" />
+                            <externalMetadataColumn
+                              refId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\DFNB3.Outputs[OLE DB Source Output].ExternalColumns[cust_add_id]"
+                              dataType="i4"
+                              name="cust_add_id" />
+                            <externalMetadataColumn
+                              refId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\DFNB3.Outputs[OLE DB Source Output].ExternalColumns[cust_add_lat]"
+                              dataType="numeric"
+                              name="cust_add_lat"
+                              precision="16"
+                              scale="12" />
+                            <externalMetadataColumn
+                              refId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\DFNB3.Outputs[OLE DB Source Output].ExternalColumns[cust_add_lon]"
+                              dataType="numeric"
+                              name="cust_add_lon"
+                              precision="16"
+                              scale="12" />
+                            <externalMetadataColumn
+                              refId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\DFNB3.Outputs[OLE DB Source Output].ExternalColumns[cust_add_type]"
+                              codePage="1252"
+                              dataType="str"
+                              length="1"
+                              name="cust_add_type" />
+                            <externalMetadataColumn
+                              refId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\DFNB3.Outputs[OLE DB Source Output].ExternalColumns[as_of_date]"
+                              dataType="dbDate"
+                              name="as_of_date" />
+                            <externalMetadataColumn
+                              refId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\DFNB3.Outputs[OLE DB Source Output].ExternalColumns[acct_id3]"
+                              dataType="i4"
+                              name="acct_id3" />
+                            <externalMetadataColumn
+                              refId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\DFNB3.Outputs[OLE DB Source Output].ExternalColumns[cur_bal]"
+                              dataType="numeric"
+                              name="cur_bal"
+                              precision="20"
+                              scale="4" />
+                          </externalMetadataColumns>
+                        </output>
+                        <output
+                          refId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\DFNB3.Outputs[OLE DB Source Error Output]"
+                          isErrorOut="true"
+                          name="OLE DB Source Error Output">
+                          <outputColumns>
+                            <outputColumn
+                              refId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\DFNB3.Outputs[OLE DB Source Error Output].Columns[acct_id]"
+                              dataType="i4"
+                              lineageId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\DFNB3.Outputs[OLE DB Source Error Output].Columns[acct_id]"
+                              name="acct_id" />
+                            <outputColumn
+                              refId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\DFNB3.Outputs[OLE DB Source Error Output].Columns[cust_id]"
+                              dataType="i2"
+                              lineageId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\DFNB3.Outputs[OLE DB Source Error Output].Columns[cust_id]"
+                              name="cust_id" />
+                            <outputColumn
+                              refId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\DFNB3.Outputs[OLE DB Source Error Output].Columns[acct_cust_role_id]"
+                              dataType="i2"
+                              lineageId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\DFNB3.Outputs[OLE DB Source Error Output].Columns[acct_cust_role_id]"
+                              name="acct_cust_role_id" />
+                            <outputColumn
+                              refId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\DFNB3.Outputs[OLE DB Source Error Output].Columns[acct_id2]"
+                              dataType="i4"
+                              lineageId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\DFNB3.Outputs[OLE DB Source Error Output].Columns[acct_id2]"
+                              name="acct_id2" />
+                            <outputColumn
+                              refId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\DFNB3.Outputs[OLE DB Source Error Output].Columns[prod_id]"
+                              dataType="i2"
+                              lineageId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\DFNB3.Outputs[OLE DB Source Error Output].Columns[prod_id]"
+                              name="prod_id" />
+                            <outputColumn
+                              refId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\DFNB3.Outputs[OLE DB Source Error Output].Columns[open_date]"
+                              dataType="dbDate"
+                              lineageId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\DFNB3.Outputs[OLE DB Source Error Output].Columns[open_date]"
+                              name="open_date" />
+                            <outputColumn
+                              refId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\DFNB3.Outputs[OLE DB Source Error Output].Columns[close_date]"
+                              dataType="dbDate"
+                              lineageId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\DFNB3.Outputs[OLE DB Source Error Output].Columns[close_date]"
+                              name="close_date" />
+                            <outputColumn
+                              refId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\DFNB3.Outputs[OLE DB Source Error Output].Columns[open_close_code]"
+                              codePage="1252"
+                              dataType="str"
+                              length="1"
+                              lineageId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\DFNB3.Outputs[OLE DB Source Error Output].Columns[open_close_code]"
+                              name="open_close_code" />
+                            <outputColumn
+                              refId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\DFNB3.Outputs[OLE DB Source Error Output].Columns[branch_id]"
+                              dataType="i2"
+                              lineageId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\DFNB3.Outputs[OLE DB Source Error Output].Columns[branch_id]"
+                              name="branch_id" />
+                            <outputColumn
+                              refId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\DFNB3.Outputs[OLE DB Source Error Output].Columns[acct_rel_id]"
+                              dataType="i2"
+                              lineageId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\DFNB3.Outputs[OLE DB Source Error Output].Columns[acct_rel_id]"
+                              name="acct_rel_id" />
+                            <outputColumn
+                              refId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\DFNB3.Outputs[OLE DB Source Error Output].Columns[pri_cust_id]"
+                              dataType="i2"
+                              lineageId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\DFNB3.Outputs[OLE DB Source Error Output].Columns[pri_cust_id]"
+                              name="pri_cust_id" />
+                            <outputColumn
+                              refId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\DFNB3.Outputs[OLE DB Source Error Output].Columns[loan_amt]"
+                              dataType="numeric"
+                              lineageId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\DFNB3.Outputs[OLE DB Source Error Output].Columns[loan_amt]"
+                              name="loan_amt"
+                              precision="20"
+                              scale="4" />
+                            <outputColumn
+                              refId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\DFNB3.Outputs[OLE DB Source Error Output].Columns[acct_branch_id]"
+                              dataType="i2"
+                              lineageId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\DFNB3.Outputs[OLE DB Source Error Output].Columns[acct_branch_id]"
+                              name="acct_branch_id" />
+                            <outputColumn
+                              refId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\DFNB3.Outputs[OLE DB Source Error Output].Columns[acct_branch_code]"
+                              codePage="1252"
+                              dataType="str"
+                              length="5"
+                              lineageId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\DFNB3.Outputs[OLE DB Source Error Output].Columns[acct_branch_code]"
+                              name="acct_branch_code" />
+                            <outputColumn
+                              refId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\DFNB3.Outputs[OLE DB Source Error Output].Columns[acct_branch_desc]"
+                              codePage="1252"
+                              dataType="str"
+                              length="100"
+                              lineageId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\DFNB3.Outputs[OLE DB Source Error Output].Columns[acct_branch_desc]"
+                              name="acct_branch_desc" />
+                            <outputColumn
+                              refId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\DFNB3.Outputs[OLE DB Source Error Output].Columns[acct_region_id]"
+                              dataType="i4"
+                              lineageId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\DFNB3.Outputs[OLE DB Source Error Output].Columns[acct_region_id]"
+                              name="acct_region_id" />
+                            <outputColumn
+                              refId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\DFNB3.Outputs[OLE DB Source Error Output].Columns[acct_area_id]"
+                              dataType="i4"
+                              lineageId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\DFNB3.Outputs[OLE DB Source Error Output].Columns[acct_area_id]"
+                              name="acct_area_id" />
+                            <outputColumn
+                              refId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\DFNB3.Outputs[OLE DB Source Error Output].Columns[acct_branch_lat]"
+                              dataType="numeric"
+                              lineageId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\DFNB3.Outputs[OLE DB Source Error Output].Columns[acct_branch_lat]"
+                              name="acct_branch_lat"
+                              precision="16"
+                              scale="12" />
+                            <outputColumn
+                              refId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\DFNB3.Outputs[OLE DB Source Error Output].Columns[acct_branch_lon]"
+                              dataType="numeric"
+                              lineageId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\DFNB3.Outputs[OLE DB Source Error Output].Columns[acct_branch_lon]"
+                              name="acct_branch_lon"
+                              precision="16"
+                              scale="12" />
+                            <outputColumn
+                              refId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\DFNB3.Outputs[OLE DB Source Error Output].Columns[acct_branch_add_id]"
+                              dataType="i4"
+                              lineageId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\DFNB3.Outputs[OLE DB Source Error Output].Columns[acct_branch_add_id]"
+                              name="acct_branch_add_id" />
+                            <outputColumn
+                              refId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\DFNB3.Outputs[OLE DB Source Error Output].Columns[acct_branch_add_lat]"
+                              dataType="numeric"
+                              lineageId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\DFNB3.Outputs[OLE DB Source Error Output].Columns[acct_branch_add_lat]"
+                              name="acct_branch_add_lat"
+                              precision="16"
+                              scale="12" />
+                            <outputColumn
+                              refId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\DFNB3.Outputs[OLE DB Source Error Output].Columns[acct_branch_add_lon]"
+                              dataType="numeric"
+                              lineageId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\DFNB3.Outputs[OLE DB Source Error Output].Columns[acct_branch_add_lon]"
+                              name="acct_branch_add_lon"
+                              precision="16"
+                              scale="12" />
+                            <outputColumn
+                              refId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\DFNB3.Outputs[OLE DB Source Error Output].Columns[acct_branch_add_type]"
+                              codePage="1252"
+                              dataType="str"
+                              length="1"
+                              lineageId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\DFNB3.Outputs[OLE DB Source Error Output].Columns[acct_branch_add_type]"
+                              name="acct_branch_add_type" />
+                            <outputColumn
+                              refId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\DFNB3.Outputs[OLE DB Source Error Output].Columns[cust_id2]"
+                              dataType="i2"
+                              lineageId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\DFNB3.Outputs[OLE DB Source Error Output].Columns[cust_id2]"
+                              name="cust_id2" />
+                            <outputColumn
+                              refId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\DFNB3.Outputs[OLE DB Source Error Output].Columns[last_name]"
+                              codePage="1252"
+                              dataType="str"
+                              length="100"
+                              lineageId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\DFNB3.Outputs[OLE DB Source Error Output].Columns[last_name]"
+                              name="last_name" />
+                            <outputColumn
+                              refId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\DFNB3.Outputs[OLE DB Source Error Output].Columns[first_name]"
+                              codePage="1252"
+                              dataType="str"
+                              length="100"
+                              lineageId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\DFNB3.Outputs[OLE DB Source Error Output].Columns[first_name]"
+                              name="first_name" />
+                            <outputColumn
+                              refId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\DFNB3.Outputs[OLE DB Source Error Output].Columns[gender]"
+                              codePage="1252"
+                              dataType="str"
+                              length="1"
+                              lineageId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\DFNB3.Outputs[OLE DB Source Error Output].Columns[gender]"
+                              name="gender" />
+                            <outputColumn
+                              refId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\DFNB3.Outputs[OLE DB Source Error Output].Columns[birth_date]"
+                              dataType="dbDate"
+                              lineageId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\DFNB3.Outputs[OLE DB Source Error Output].Columns[birth_date]"
+                              name="birth_date" />
+                            <outputColumn
+                              refId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\DFNB3.Outputs[OLE DB Source Error Output].Columns[cust_since_date]"
+                              dataType="dbDate"
+                              lineageId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\DFNB3.Outputs[OLE DB Source Error Output].Columns[cust_since_date]"
+                              name="cust_since_date" />
+                            <outputColumn
+                              refId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\DFNB3.Outputs[OLE DB Source Error Output].Columns[pri_branch_id]"
+                              dataType="i2"
+                              lineageId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\DFNB3.Outputs[OLE DB Source Error Output].Columns[pri_branch_id]"
+                              name="pri_branch_id" />
+                            <outputColumn
+                              refId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\DFNB3.Outputs[OLE DB Source Error Output].Columns[cust_pri_branch_dist]"
+                              dataType="numeric"
+                              lineageId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\DFNB3.Outputs[OLE DB Source Error Output].Columns[cust_pri_branch_dist]"
+                              name="cust_pri_branch_dist"
+                              precision="7"
+                              scale="2" />
+                            <outputColumn
+                              refId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\DFNB3.Outputs[OLE DB Source Error Output].Columns[cust_lat]"
+                              dataType="numeric"
+                              lineageId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\DFNB3.Outputs[OLE DB Source Error Output].Columns[cust_lat]"
+                              name="cust_lat"
+                              precision="16"
+                              scale="12" />
+                            <outputColumn
+                              refId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\DFNB3.Outputs[OLE DB Source Error Output].Columns[cust_lon]"
+                              dataType="numeric"
+                              lineageId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\DFNB3.Outputs[OLE DB Source Error Output].Columns[cust_lon]"
+                              name="cust_lon"
+                              precision="16"
+                              scale="12" />
+                            <outputColumn
+                              refId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\DFNB3.Outputs[OLE DB Source Error Output].Columns[cust_rel_id]"
+                              dataType="i2"
+                              lineageId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\DFNB3.Outputs[OLE DB Source Error Output].Columns[cust_rel_id]"
+                              name="cust_rel_id" />
+                            <outputColumn
+                              refId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\DFNB3.Outputs[OLE DB Source Error Output].Columns[cust_add_id]"
+                              dataType="i4"
+                              lineageId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\DFNB3.Outputs[OLE DB Source Error Output].Columns[cust_add_id]"
+                              name="cust_add_id" />
+                            <outputColumn
+                              refId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\DFNB3.Outputs[OLE DB Source Error Output].Columns[cust_add_lat]"
+                              dataType="numeric"
+                              lineageId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\DFNB3.Outputs[OLE DB Source Error Output].Columns[cust_add_lat]"
+                              name="cust_add_lat"
+                              precision="16"
+                              scale="12" />
+                            <outputColumn
+                              refId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\DFNB3.Outputs[OLE DB Source Error Output].Columns[cust_add_lon]"
+                              dataType="numeric"
+                              lineageId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\DFNB3.Outputs[OLE DB Source Error Output].Columns[cust_add_lon]"
+                              name="cust_add_lon"
+                              precision="16"
+                              scale="12" />
+                            <outputColumn
+                              refId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\DFNB3.Outputs[OLE DB Source Error Output].Columns[cust_add_type]"
+                              codePage="1252"
+                              dataType="str"
+                              length="1"
+                              lineageId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\DFNB3.Outputs[OLE DB Source Error Output].Columns[cust_add_type]"
+                              name="cust_add_type" />
+                            <outputColumn
+                              refId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\DFNB3.Outputs[OLE DB Source Error Output].Columns[as_of_date]"
+                              dataType="dbDate"
+                              lineageId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\DFNB3.Outputs[OLE DB Source Error Output].Columns[as_of_date]"
+                              name="as_of_date" />
+                            <outputColumn
+                              refId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\DFNB3.Outputs[OLE DB Source Error Output].Columns[acct_id3]"
+                              dataType="i4"
+                              lineageId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\DFNB3.Outputs[OLE DB Source Error Output].Columns[acct_id3]"
+                              name="acct_id3" />
+                            <outputColumn
+                              refId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\DFNB3.Outputs[OLE DB Source Error Output].Columns[cur_bal]"
+                              dataType="numeric"
+                              lineageId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\DFNB3.Outputs[OLE DB Source Error Output].Columns[cur_bal]"
+                              name="cur_bal"
+                              precision="20"
+                              scale="4" />
+                            <outputColumn
+                              refId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\DFNB3.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                              dataType="i4"
+                              lineageId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\DFNB3.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                              name="ErrorCode"
+                              specialFlags="1" />
+                            <outputColumn
+                              refId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\DFNB3.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                              dataType="i4"
+                              lineageId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\DFNB3.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                              name="ErrorColumn"
+                              specialFlags="2" />
+                          </outputColumns>
+                          <externalMetadataColumns />
+                        </output>
+                      </outputs>
+                    </component>
+                    <component
+                      refId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\Union All"
+                      componentClassID="Microsoft.UnionAll"
+                      contactInfo="Union All;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+                      description="Combines rows from multiple data flows without sorting. For example, add rows back to a data flow after correction of errors. If sorting is important, we recommend using the Merge transformation."
+                      name="Union All"
+                      version="1">
+                      <inputs>
+                        <input
+                          refId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\Union All.Inputs[Union All Input 1]"
+                          name="Union All Input 1">
+                          <inputColumns>
+                            <inputColumn
+                              refId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\Union All.Inputs[Union All Input 1].Columns[acct_id]"
+                              cachedDataType="i4"
+                              cachedName="acct_id"
+                              lineageId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\DFNB3.Outputs[OLE DB Source Output].Columns[acct_id]">
+                              <properties>
+                                <property
+                                  containsID="true"
+                                  dataType="System.Int32"
+                                  description="Output column lineage ID"
+                                  name="OutputColumnLineageID">#{Package\SEQ Package Logic\Test Connection Managers\DFNB3\Union All.Outputs[Union All Output 1].Columns[acct_id]}</property>
+                              </properties>
+                            </inputColumn>
+                            <inputColumn
+                              refId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\Union All.Inputs[Union All Input 1].Columns[cust_id]"
+                              cachedDataType="i2"
+                              cachedName="cust_id"
+                              lineageId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\DFNB3.Outputs[OLE DB Source Output].Columns[cust_id]">
+                              <properties>
+                                <property
+                                  containsID="true"
+                                  dataType="System.Int32"
+                                  description="Output column lineage ID"
+                                  name="OutputColumnLineageID">#{Package\SEQ Package Logic\Test Connection Managers\DFNB3\Union All.Outputs[Union All Output 1].Columns[cust_id]}</property>
+                              </properties>
+                            </inputColumn>
+                            <inputColumn
+                              refId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\Union All.Inputs[Union All Input 1].Columns[acct_cust_role_id]"
+                              cachedDataType="i2"
+                              cachedName="acct_cust_role_id"
+                              lineageId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\DFNB3.Outputs[OLE DB Source Output].Columns[acct_cust_role_id]">
+                              <properties>
+                                <property
+                                  containsID="true"
+                                  dataType="System.Int32"
+                                  description="Output column lineage ID"
+                                  name="OutputColumnLineageID">#{Package\SEQ Package Logic\Test Connection Managers\DFNB3\Union All.Outputs[Union All Output 1].Columns[acct_cust_role_id]}</property>
+                              </properties>
+                            </inputColumn>
+                            <inputColumn
+                              refId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\Union All.Inputs[Union All Input 1].Columns[acct_id2]"
+                              cachedDataType="i4"
+                              cachedName="acct_id2"
+                              lineageId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\DFNB3.Outputs[OLE DB Source Output].Columns[acct_id2]">
+                              <properties>
+                                <property
+                                  containsID="true"
+                                  dataType="System.Int32"
+                                  description="Output column lineage ID"
+                                  name="OutputColumnLineageID">#{Package\SEQ Package Logic\Test Connection Managers\DFNB3\Union All.Outputs[Union All Output 1].Columns[acct_id2]}</property>
+                              </properties>
+                            </inputColumn>
+                            <inputColumn
+                              refId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\Union All.Inputs[Union All Input 1].Columns[prod_id]"
+                              cachedDataType="i2"
+                              cachedName="prod_id"
+                              lineageId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\DFNB3.Outputs[OLE DB Source Output].Columns[prod_id]">
+                              <properties>
+                                <property
+                                  containsID="true"
+                                  dataType="System.Int32"
+                                  description="Output column lineage ID"
+                                  name="OutputColumnLineageID">#{Package\SEQ Package Logic\Test Connection Managers\DFNB3\Union All.Outputs[Union All Output 1].Columns[prod_id]}</property>
+                              </properties>
+                            </inputColumn>
+                            <inputColumn
+                              refId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\Union All.Inputs[Union All Input 1].Columns[open_date]"
+                              cachedDataType="dbDate"
+                              cachedName="open_date"
+                              lineageId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\DFNB3.Outputs[OLE DB Source Output].Columns[open_date]">
+                              <properties>
+                                <property
+                                  containsID="true"
+                                  dataType="System.Int32"
+                                  description="Output column lineage ID"
+                                  name="OutputColumnLineageID">#{Package\SEQ Package Logic\Test Connection Managers\DFNB3\Union All.Outputs[Union All Output 1].Columns[open_date]}</property>
+                              </properties>
+                            </inputColumn>
+                            <inputColumn
+                              refId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\Union All.Inputs[Union All Input 1].Columns[close_date]"
+                              cachedDataType="dbDate"
+                              cachedName="close_date"
+                              lineageId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\DFNB3.Outputs[OLE DB Source Output].Columns[close_date]">
+                              <properties>
+                                <property
+                                  containsID="true"
+                                  dataType="System.Int32"
+                                  description="Output column lineage ID"
+                                  name="OutputColumnLineageID">#{Package\SEQ Package Logic\Test Connection Managers\DFNB3\Union All.Outputs[Union All Output 1].Columns[close_date]}</property>
+                              </properties>
+                            </inputColumn>
+                            <inputColumn
+                              refId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\Union All.Inputs[Union All Input 1].Columns[open_close_code]"
+                              cachedCodepage="1252"
+                              cachedDataType="str"
+                              cachedLength="1"
+                              cachedName="open_close_code"
+                              lineageId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\DFNB3.Outputs[OLE DB Source Output].Columns[open_close_code]">
+                              <properties>
+                                <property
+                                  containsID="true"
+                                  dataType="System.Int32"
+                                  description="Output column lineage ID"
+                                  name="OutputColumnLineageID">#{Package\SEQ Package Logic\Test Connection Managers\DFNB3\Union All.Outputs[Union All Output 1].Columns[open_close_code]}</property>
+                              </properties>
+                            </inputColumn>
+                            <inputColumn
+                              refId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\Union All.Inputs[Union All Input 1].Columns[branch_id]"
+                              cachedDataType="i2"
+                              cachedName="branch_id"
+                              lineageId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\DFNB3.Outputs[OLE DB Source Output].Columns[branch_id]">
+                              <properties>
+                                <property
+                                  containsID="true"
+                                  dataType="System.Int32"
+                                  description="Output column lineage ID"
+                                  name="OutputColumnLineageID">#{Package\SEQ Package Logic\Test Connection Managers\DFNB3\Union All.Outputs[Union All Output 1].Columns[branch_id]}</property>
+                              </properties>
+                            </inputColumn>
+                            <inputColumn
+                              refId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\Union All.Inputs[Union All Input 1].Columns[acct_rel_id]"
+                              cachedDataType="i2"
+                              cachedName="acct_rel_id"
+                              lineageId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\DFNB3.Outputs[OLE DB Source Output].Columns[acct_rel_id]">
+                              <properties>
+                                <property
+                                  containsID="true"
+                                  dataType="System.Int32"
+                                  description="Output column lineage ID"
+                                  name="OutputColumnLineageID">#{Package\SEQ Package Logic\Test Connection Managers\DFNB3\Union All.Outputs[Union All Output 1].Columns[acct_rel_id]}</property>
+                              </properties>
+                            </inputColumn>
+                            <inputColumn
+                              refId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\Union All.Inputs[Union All Input 1].Columns[pri_cust_id]"
+                              cachedDataType="i2"
+                              cachedName="pri_cust_id"
+                              lineageId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\DFNB3.Outputs[OLE DB Source Output].Columns[pri_cust_id]">
+                              <properties>
+                                <property
+                                  containsID="true"
+                                  dataType="System.Int32"
+                                  description="Output column lineage ID"
+                                  name="OutputColumnLineageID">#{Package\SEQ Package Logic\Test Connection Managers\DFNB3\Union All.Outputs[Union All Output 1].Columns[pri_cust_id]}</property>
+                              </properties>
+                            </inputColumn>
+                            <inputColumn
+                              refId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\Union All.Inputs[Union All Input 1].Columns[loan_amt]"
+                              cachedDataType="numeric"
+                              cachedName="loan_amt"
+                              cachedPrecision="20"
+                              cachedScale="4"
+                              lineageId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\DFNB3.Outputs[OLE DB Source Output].Columns[loan_amt]">
+                              <properties>
+                                <property
+                                  containsID="true"
+                                  dataType="System.Int32"
+                                  description="Output column lineage ID"
+                                  name="OutputColumnLineageID">#{Package\SEQ Package Logic\Test Connection Managers\DFNB3\Union All.Outputs[Union All Output 1].Columns[loan_amt]}</property>
+                              </properties>
+                            </inputColumn>
+                            <inputColumn
+                              refId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\Union All.Inputs[Union All Input 1].Columns[acct_branch_id]"
+                              cachedDataType="i2"
+                              cachedName="acct_branch_id"
+                              lineageId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\DFNB3.Outputs[OLE DB Source Output].Columns[acct_branch_id]">
+                              <properties>
+                                <property
+                                  containsID="true"
+                                  dataType="System.Int32"
+                                  description="Output column lineage ID"
+                                  name="OutputColumnLineageID">#{Package\SEQ Package Logic\Test Connection Managers\DFNB3\Union All.Outputs[Union All Output 1].Columns[acct_branch_id]}</property>
+                              </properties>
+                            </inputColumn>
+                            <inputColumn
+                              refId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\Union All.Inputs[Union All Input 1].Columns[acct_branch_code]"
+                              cachedCodepage="1252"
+                              cachedDataType="str"
+                              cachedLength="5"
+                              cachedName="acct_branch_code"
+                              lineageId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\DFNB3.Outputs[OLE DB Source Output].Columns[acct_branch_code]">
+                              <properties>
+                                <property
+                                  containsID="true"
+                                  dataType="System.Int32"
+                                  description="Output column lineage ID"
+                                  name="OutputColumnLineageID">#{Package\SEQ Package Logic\Test Connection Managers\DFNB3\Union All.Outputs[Union All Output 1].Columns[acct_branch_code]}</property>
+                              </properties>
+                            </inputColumn>
+                            <inputColumn
+                              refId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\Union All.Inputs[Union All Input 1].Columns[acct_branch_desc]"
+                              cachedCodepage="1252"
+                              cachedDataType="str"
+                              cachedLength="100"
+                              cachedName="acct_branch_desc"
+                              lineageId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\DFNB3.Outputs[OLE DB Source Output].Columns[acct_branch_desc]">
+                              <properties>
+                                <property
+                                  containsID="true"
+                                  dataType="System.Int32"
+                                  description="Output column lineage ID"
+                                  name="OutputColumnLineageID">#{Package\SEQ Package Logic\Test Connection Managers\DFNB3\Union All.Outputs[Union All Output 1].Columns[acct_branch_desc]}</property>
+                              </properties>
+                            </inputColumn>
+                            <inputColumn
+                              refId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\Union All.Inputs[Union All Input 1].Columns[acct_region_id]"
+                              cachedDataType="i4"
+                              cachedName="acct_region_id"
+                              lineageId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\DFNB3.Outputs[OLE DB Source Output].Columns[acct_region_id]">
+                              <properties>
+                                <property
+                                  containsID="true"
+                                  dataType="System.Int32"
+                                  description="Output column lineage ID"
+                                  name="OutputColumnLineageID">#{Package\SEQ Package Logic\Test Connection Managers\DFNB3\Union All.Outputs[Union All Output 1].Columns[acct_region_id]}</property>
+                              </properties>
+                            </inputColumn>
+                            <inputColumn
+                              refId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\Union All.Inputs[Union All Input 1].Columns[acct_area_id]"
+                              cachedDataType="i4"
+                              cachedName="acct_area_id"
+                              lineageId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\DFNB3.Outputs[OLE DB Source Output].Columns[acct_area_id]">
+                              <properties>
+                                <property
+                                  containsID="true"
+                                  dataType="System.Int32"
+                                  description="Output column lineage ID"
+                                  name="OutputColumnLineageID">#{Package\SEQ Package Logic\Test Connection Managers\DFNB3\Union All.Outputs[Union All Output 1].Columns[acct_area_id]}</property>
+                              </properties>
+                            </inputColumn>
+                            <inputColumn
+                              refId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\Union All.Inputs[Union All Input 1].Columns[acct_branch_lat]"
+                              cachedDataType="numeric"
+                              cachedName="acct_branch_lat"
+                              cachedPrecision="16"
+                              cachedScale="12"
+                              lineageId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\DFNB3.Outputs[OLE DB Source Output].Columns[acct_branch_lat]">
+                              <properties>
+                                <property
+                                  containsID="true"
+                                  dataType="System.Int32"
+                                  description="Output column lineage ID"
+                                  name="OutputColumnLineageID">#{Package\SEQ Package Logic\Test Connection Managers\DFNB3\Union All.Outputs[Union All Output 1].Columns[acct_branch_lat]}</property>
+                              </properties>
+                            </inputColumn>
+                            <inputColumn
+                              refId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\Union All.Inputs[Union All Input 1].Columns[acct_branch_lon]"
+                              cachedDataType="numeric"
+                              cachedName="acct_branch_lon"
+                              cachedPrecision="16"
+                              cachedScale="12"
+                              lineageId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\DFNB3.Outputs[OLE DB Source Output].Columns[acct_branch_lon]">
+                              <properties>
+                                <property
+                                  containsID="true"
+                                  dataType="System.Int32"
+                                  description="Output column lineage ID"
+                                  name="OutputColumnLineageID">#{Package\SEQ Package Logic\Test Connection Managers\DFNB3\Union All.Outputs[Union All Output 1].Columns[acct_branch_lon]}</property>
+                              </properties>
+                            </inputColumn>
+                            <inputColumn
+                              refId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\Union All.Inputs[Union All Input 1].Columns[acct_branch_add_id]"
+                              cachedDataType="i4"
+                              cachedName="acct_branch_add_id"
+                              lineageId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\DFNB3.Outputs[OLE DB Source Output].Columns[acct_branch_add_id]">
+                              <properties>
+                                <property
+                                  containsID="true"
+                                  dataType="System.Int32"
+                                  description="Output column lineage ID"
+                                  name="OutputColumnLineageID">#{Package\SEQ Package Logic\Test Connection Managers\DFNB3\Union All.Outputs[Union All Output 1].Columns[acct_branch_add_id]}</property>
+                              </properties>
+                            </inputColumn>
+                            <inputColumn
+                              refId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\Union All.Inputs[Union All Input 1].Columns[acct_branch_add_lat]"
+                              cachedDataType="numeric"
+                              cachedName="acct_branch_add_lat"
+                              cachedPrecision="16"
+                              cachedScale="12"
+                              lineageId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\DFNB3.Outputs[OLE DB Source Output].Columns[acct_branch_add_lat]">
+                              <properties>
+                                <property
+                                  containsID="true"
+                                  dataType="System.Int32"
+                                  description="Output column lineage ID"
+                                  name="OutputColumnLineageID">#{Package\SEQ Package Logic\Test Connection Managers\DFNB3\Union All.Outputs[Union All Output 1].Columns[acct_branch_add_lat]}</property>
+                              </properties>
+                            </inputColumn>
+                            <inputColumn
+                              refId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\Union All.Inputs[Union All Input 1].Columns[acct_branch_add_lon]"
+                              cachedDataType="numeric"
+                              cachedName="acct_branch_add_lon"
+                              cachedPrecision="16"
+                              cachedScale="12"
+                              lineageId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\DFNB3.Outputs[OLE DB Source Output].Columns[acct_branch_add_lon]">
+                              <properties>
+                                <property
+                                  containsID="true"
+                                  dataType="System.Int32"
+                                  description="Output column lineage ID"
+                                  name="OutputColumnLineageID">#{Package\SEQ Package Logic\Test Connection Managers\DFNB3\Union All.Outputs[Union All Output 1].Columns[acct_branch_add_lon]}</property>
+                              </properties>
+                            </inputColumn>
+                            <inputColumn
+                              refId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\Union All.Inputs[Union All Input 1].Columns[acct_branch_add_type]"
+                              cachedCodepage="1252"
+                              cachedDataType="str"
+                              cachedLength="1"
+                              cachedName="acct_branch_add_type"
+                              lineageId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\DFNB3.Outputs[OLE DB Source Output].Columns[acct_branch_add_type]">
+                              <properties>
+                                <property
+                                  containsID="true"
+                                  dataType="System.Int32"
+                                  description="Output column lineage ID"
+                                  name="OutputColumnLineageID">#{Package\SEQ Package Logic\Test Connection Managers\DFNB3\Union All.Outputs[Union All Output 1].Columns[acct_branch_add_type]}</property>
+                              </properties>
+                            </inputColumn>
+                            <inputColumn
+                              refId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\Union All.Inputs[Union All Input 1].Columns[cust_id2]"
+                              cachedDataType="i2"
+                              cachedName="cust_id2"
+                              lineageId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\DFNB3.Outputs[OLE DB Source Output].Columns[cust_id2]">
+                              <properties>
+                                <property
+                                  containsID="true"
+                                  dataType="System.Int32"
+                                  description="Output column lineage ID"
+                                  name="OutputColumnLineageID">#{Package\SEQ Package Logic\Test Connection Managers\DFNB3\Union All.Outputs[Union All Output 1].Columns[cust_id2]}</property>
+                              </properties>
+                            </inputColumn>
+                            <inputColumn
+                              refId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\Union All.Inputs[Union All Input 1].Columns[last_name]"
+                              cachedCodepage="1252"
+                              cachedDataType="str"
+                              cachedLength="100"
+                              cachedName="last_name"
+                              lineageId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\DFNB3.Outputs[OLE DB Source Output].Columns[last_name]">
+                              <properties>
+                                <property
+                                  containsID="true"
+                                  dataType="System.Int32"
+                                  description="Output column lineage ID"
+                                  name="OutputColumnLineageID">#{Package\SEQ Package Logic\Test Connection Managers\DFNB3\Union All.Outputs[Union All Output 1].Columns[last_name]}</property>
+                              </properties>
+                            </inputColumn>
+                            <inputColumn
+                              refId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\Union All.Inputs[Union All Input 1].Columns[first_name]"
+                              cachedCodepage="1252"
+                              cachedDataType="str"
+                              cachedLength="100"
+                              cachedName="first_name"
+                              lineageId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\DFNB3.Outputs[OLE DB Source Output].Columns[first_name]">
+                              <properties>
+                                <property
+                                  containsID="true"
+                                  dataType="System.Int32"
+                                  description="Output column lineage ID"
+                                  name="OutputColumnLineageID">#{Package\SEQ Package Logic\Test Connection Managers\DFNB3\Union All.Outputs[Union All Output 1].Columns[first_name]}</property>
+                              </properties>
+                            </inputColumn>
+                            <inputColumn
+                              refId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\Union All.Inputs[Union All Input 1].Columns[gender]"
+                              cachedCodepage="1252"
+                              cachedDataType="str"
+                              cachedLength="1"
+                              cachedName="gender"
+                              lineageId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\DFNB3.Outputs[OLE DB Source Output].Columns[gender]">
+                              <properties>
+                                <property
+                                  containsID="true"
+                                  dataType="System.Int32"
+                                  description="Output column lineage ID"
+                                  name="OutputColumnLineageID">#{Package\SEQ Package Logic\Test Connection Managers\DFNB3\Union All.Outputs[Union All Output 1].Columns[gender]}</property>
+                              </properties>
+                            </inputColumn>
+                            <inputColumn
+                              refId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\Union All.Inputs[Union All Input 1].Columns[birth_date]"
+                              cachedDataType="dbDate"
+                              cachedName="birth_date"
+                              lineageId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\DFNB3.Outputs[OLE DB Source Output].Columns[birth_date]">
+                              <properties>
+                                <property
+                                  containsID="true"
+                                  dataType="System.Int32"
+                                  description="Output column lineage ID"
+                                  name="OutputColumnLineageID">#{Package\SEQ Package Logic\Test Connection Managers\DFNB3\Union All.Outputs[Union All Output 1].Columns[birth_date]}</property>
+                              </properties>
+                            </inputColumn>
+                            <inputColumn
+                              refId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\Union All.Inputs[Union All Input 1].Columns[cust_since_date]"
+                              cachedDataType="dbDate"
+                              cachedName="cust_since_date"
+                              lineageId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\DFNB3.Outputs[OLE DB Source Output].Columns[cust_since_date]">
+                              <properties>
+                                <property
+                                  containsID="true"
+                                  dataType="System.Int32"
+                                  description="Output column lineage ID"
+                                  name="OutputColumnLineageID">#{Package\SEQ Package Logic\Test Connection Managers\DFNB3\Union All.Outputs[Union All Output 1].Columns[cust_since_date]}</property>
+                              </properties>
+                            </inputColumn>
+                            <inputColumn
+                              refId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\Union All.Inputs[Union All Input 1].Columns[pri_branch_id]"
+                              cachedDataType="i2"
+                              cachedName="pri_branch_id"
+                              lineageId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\DFNB3.Outputs[OLE DB Source Output].Columns[pri_branch_id]">
+                              <properties>
+                                <property
+                                  containsID="true"
+                                  dataType="System.Int32"
+                                  description="Output column lineage ID"
+                                  name="OutputColumnLineageID">#{Package\SEQ Package Logic\Test Connection Managers\DFNB3\Union All.Outputs[Union All Output 1].Columns[pri_branch_id]}</property>
+                              </properties>
+                            </inputColumn>
+                            <inputColumn
+                              refId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\Union All.Inputs[Union All Input 1].Columns[cust_pri_branch_dist]"
+                              cachedDataType="numeric"
+                              cachedName="cust_pri_branch_dist"
+                              cachedPrecision="7"
+                              cachedScale="2"
+                              lineageId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\DFNB3.Outputs[OLE DB Source Output].Columns[cust_pri_branch_dist]">
+                              <properties>
+                                <property
+                                  containsID="true"
+                                  dataType="System.Int32"
+                                  description="Output column lineage ID"
+                                  name="OutputColumnLineageID">#{Package\SEQ Package Logic\Test Connection Managers\DFNB3\Union All.Outputs[Union All Output 1].Columns[cust_pri_branch_dist]}</property>
+                              </properties>
+                            </inputColumn>
+                            <inputColumn
+                              refId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\Union All.Inputs[Union All Input 1].Columns[cust_lat]"
+                              cachedDataType="numeric"
+                              cachedName="cust_lat"
+                              cachedPrecision="16"
+                              cachedScale="12"
+                              lineageId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\DFNB3.Outputs[OLE DB Source Output].Columns[cust_lat]">
+                              <properties>
+                                <property
+                                  containsID="true"
+                                  dataType="System.Int32"
+                                  description="Output column lineage ID"
+                                  name="OutputColumnLineageID">#{Package\SEQ Package Logic\Test Connection Managers\DFNB3\Union All.Outputs[Union All Output 1].Columns[cust_lat]}</property>
+                              </properties>
+                            </inputColumn>
+                            <inputColumn
+                              refId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\Union All.Inputs[Union All Input 1].Columns[cust_lon]"
+                              cachedDataType="numeric"
+                              cachedName="cust_lon"
+                              cachedPrecision="16"
+                              cachedScale="12"
+                              lineageId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\DFNB3.Outputs[OLE DB Source Output].Columns[cust_lon]">
+                              <properties>
+                                <property
+                                  containsID="true"
+                                  dataType="System.Int32"
+                                  description="Output column lineage ID"
+                                  name="OutputColumnLineageID">#{Package\SEQ Package Logic\Test Connection Managers\DFNB3\Union All.Outputs[Union All Output 1].Columns[cust_lon]}</property>
+                              </properties>
+                            </inputColumn>
+                            <inputColumn
+                              refId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\Union All.Inputs[Union All Input 1].Columns[cust_rel_id]"
+                              cachedDataType="i2"
+                              cachedName="cust_rel_id"
+                              lineageId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\DFNB3.Outputs[OLE DB Source Output].Columns[cust_rel_id]">
+                              <properties>
+                                <property
+                                  containsID="true"
+                                  dataType="System.Int32"
+                                  description="Output column lineage ID"
+                                  name="OutputColumnLineageID">#{Package\SEQ Package Logic\Test Connection Managers\DFNB3\Union All.Outputs[Union All Output 1].Columns[cust_rel_id]}</property>
+                              </properties>
+                            </inputColumn>
+                            <inputColumn
+                              refId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\Union All.Inputs[Union All Input 1].Columns[cust_add_id]"
+                              cachedDataType="i4"
+                              cachedName="cust_add_id"
+                              lineageId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\DFNB3.Outputs[OLE DB Source Output].Columns[cust_add_id]">
+                              <properties>
+                                <property
+                                  containsID="true"
+                                  dataType="System.Int32"
+                                  description="Output column lineage ID"
+                                  name="OutputColumnLineageID">#{Package\SEQ Package Logic\Test Connection Managers\DFNB3\Union All.Outputs[Union All Output 1].Columns[cust_add_id]}</property>
+                              </properties>
+                            </inputColumn>
+                            <inputColumn
+                              refId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\Union All.Inputs[Union All Input 1].Columns[cust_add_lat]"
+                              cachedDataType="numeric"
+                              cachedName="cust_add_lat"
+                              cachedPrecision="16"
+                              cachedScale="12"
+                              lineageId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\DFNB3.Outputs[OLE DB Source Output].Columns[cust_add_lat]">
+                              <properties>
+                                <property
+                                  containsID="true"
+                                  dataType="System.Int32"
+                                  description="Output column lineage ID"
+                                  name="OutputColumnLineageID">#{Package\SEQ Package Logic\Test Connection Managers\DFNB3\Union All.Outputs[Union All Output 1].Columns[cust_add_lat]}</property>
+                              </properties>
+                            </inputColumn>
+                            <inputColumn
+                              refId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\Union All.Inputs[Union All Input 1].Columns[cust_add_lon]"
+                              cachedDataType="numeric"
+                              cachedName="cust_add_lon"
+                              cachedPrecision="16"
+                              cachedScale="12"
+                              lineageId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\DFNB3.Outputs[OLE DB Source Output].Columns[cust_add_lon]">
+                              <properties>
+                                <property
+                                  containsID="true"
+                                  dataType="System.Int32"
+                                  description="Output column lineage ID"
+                                  name="OutputColumnLineageID">#{Package\SEQ Package Logic\Test Connection Managers\DFNB3\Union All.Outputs[Union All Output 1].Columns[cust_add_lon]}</property>
+                              </properties>
+                            </inputColumn>
+                            <inputColumn
+                              refId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\Union All.Inputs[Union All Input 1].Columns[cust_add_type]"
+                              cachedCodepage="1252"
+                              cachedDataType="str"
+                              cachedLength="1"
+                              cachedName="cust_add_type"
+                              lineageId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\DFNB3.Outputs[OLE DB Source Output].Columns[cust_add_type]">
+                              <properties>
+                                <property
+                                  containsID="true"
+                                  dataType="System.Int32"
+                                  description="Output column lineage ID"
+                                  name="OutputColumnLineageID">#{Package\SEQ Package Logic\Test Connection Managers\DFNB3\Union All.Outputs[Union All Output 1].Columns[cust_add_type]}</property>
+                              </properties>
+                            </inputColumn>
+                            <inputColumn
+                              refId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\Union All.Inputs[Union All Input 1].Columns[as_of_date]"
+                              cachedDataType="dbDate"
+                              cachedName="as_of_date"
+                              lineageId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\DFNB3.Outputs[OLE DB Source Output].Columns[as_of_date]">
+                              <properties>
+                                <property
+                                  containsID="true"
+                                  dataType="System.Int32"
+                                  description="Output column lineage ID"
+                                  name="OutputColumnLineageID">#{Package\SEQ Package Logic\Test Connection Managers\DFNB3\Union All.Outputs[Union All Output 1].Columns[as_of_date]}</property>
+                              </properties>
+                            </inputColumn>
+                            <inputColumn
+                              refId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\Union All.Inputs[Union All Input 1].Columns[acct_id3]"
+                              cachedDataType="i4"
+                              cachedName="acct_id3"
+                              lineageId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\DFNB3.Outputs[OLE DB Source Output].Columns[acct_id3]">
+                              <properties>
+                                <property
+                                  containsID="true"
+                                  dataType="System.Int32"
+                                  description="Output column lineage ID"
+                                  name="OutputColumnLineageID">#{Package\SEQ Package Logic\Test Connection Managers\DFNB3\Union All.Outputs[Union All Output 1].Columns[acct_id3]}</property>
+                              </properties>
+                            </inputColumn>
+                            <inputColumn
+                              refId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\Union All.Inputs[Union All Input 1].Columns[cur_bal]"
+                              cachedDataType="numeric"
+                              cachedName="cur_bal"
+                              cachedPrecision="20"
+                              cachedScale="4"
+                              lineageId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\DFNB3.Outputs[OLE DB Source Output].Columns[cur_bal]">
+                              <properties>
+                                <property
+                                  containsID="true"
+                                  dataType="System.Int32"
+                                  description="Output column lineage ID"
+                                  name="OutputColumnLineageID">#{Package\SEQ Package Logic\Test Connection Managers\DFNB3\Union All.Outputs[Union All Output 1].Columns[cur_bal]}</property>
+                              </properties>
+                            </inputColumn>
+                          </inputColumns>
+                          <externalMetadataColumns />
+                        </input>
+                        <input
+                          refId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\Union All.Inputs[Union All Input 2]"
+                          dangling="true"
+                          hasSideEffects="true"
+                          name="Union All Input 2">
+                          <externalMetadataColumns />
+                        </input>
+                      </inputs>
+                      <outputs>
+                        <output
+                          refId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\Union All.Outputs[Union All Output 1]"
+                          name="Union All Output 1">
+                          <outputColumns>
+                            <outputColumn
+                              refId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\Union All.Outputs[Union All Output 1].Columns[acct_id]"
+                              dataType="i4"
+                              lineageId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\Union All.Outputs[Union All Output 1].Columns[acct_id]"
+                              name="acct_id" />
+                            <outputColumn
+                              refId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\Union All.Outputs[Union All Output 1].Columns[cust_id]"
+                              dataType="i2"
+                              lineageId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\Union All.Outputs[Union All Output 1].Columns[cust_id]"
+                              name="cust_id" />
+                            <outputColumn
+                              refId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\Union All.Outputs[Union All Output 1].Columns[acct_cust_role_id]"
+                              dataType="i2"
+                              lineageId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\Union All.Outputs[Union All Output 1].Columns[acct_cust_role_id]"
+                              name="acct_cust_role_id" />
+                            <outputColumn
+                              refId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\Union All.Outputs[Union All Output 1].Columns[acct_id2]"
+                              dataType="i4"
+                              lineageId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\Union All.Outputs[Union All Output 1].Columns[acct_id2]"
+                              name="acct_id2" />
+                            <outputColumn
+                              refId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\Union All.Outputs[Union All Output 1].Columns[prod_id]"
+                              dataType="i2"
+                              lineageId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\Union All.Outputs[Union All Output 1].Columns[prod_id]"
+                              name="prod_id" />
+                            <outputColumn
+                              refId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\Union All.Outputs[Union All Output 1].Columns[open_date]"
+                              dataType="dbDate"
+                              lineageId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\Union All.Outputs[Union All Output 1].Columns[open_date]"
+                              name="open_date" />
+                            <outputColumn
+                              refId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\Union All.Outputs[Union All Output 1].Columns[close_date]"
+                              dataType="dbDate"
+                              lineageId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\Union All.Outputs[Union All Output 1].Columns[close_date]"
+                              name="close_date" />
+                            <outputColumn
+                              refId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\Union All.Outputs[Union All Output 1].Columns[open_close_code]"
+                              codePage="1252"
+                              dataType="str"
+                              length="1"
+                              lineageId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\Union All.Outputs[Union All Output 1].Columns[open_close_code]"
+                              name="open_close_code" />
+                            <outputColumn
+                              refId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\Union All.Outputs[Union All Output 1].Columns[branch_id]"
+                              dataType="i2"
+                              lineageId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\Union All.Outputs[Union All Output 1].Columns[branch_id]"
+                              name="branch_id" />
+                            <outputColumn
+                              refId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\Union All.Outputs[Union All Output 1].Columns[acct_rel_id]"
+                              dataType="i2"
+                              lineageId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\Union All.Outputs[Union All Output 1].Columns[acct_rel_id]"
+                              name="acct_rel_id" />
+                            <outputColumn
+                              refId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\Union All.Outputs[Union All Output 1].Columns[pri_cust_id]"
+                              dataType="i2"
+                              lineageId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\Union All.Outputs[Union All Output 1].Columns[pri_cust_id]"
+                              name="pri_cust_id" />
+                            <outputColumn
+                              refId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\Union All.Outputs[Union All Output 1].Columns[loan_amt]"
+                              dataType="numeric"
+                              lineageId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\Union All.Outputs[Union All Output 1].Columns[loan_amt]"
+                              name="loan_amt"
+                              precision="20"
+                              scale="4" />
+                            <outputColumn
+                              refId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\Union All.Outputs[Union All Output 1].Columns[acct_branch_id]"
+                              dataType="i2"
+                              lineageId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\Union All.Outputs[Union All Output 1].Columns[acct_branch_id]"
+                              name="acct_branch_id" />
+                            <outputColumn
+                              refId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\Union All.Outputs[Union All Output 1].Columns[acct_branch_code]"
+                              codePage="1252"
+                              dataType="str"
+                              length="5"
+                              lineageId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\Union All.Outputs[Union All Output 1].Columns[acct_branch_code]"
+                              name="acct_branch_code" />
+                            <outputColumn
+                              refId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\Union All.Outputs[Union All Output 1].Columns[acct_branch_desc]"
+                              codePage="1252"
+                              dataType="str"
+                              length="100"
+                              lineageId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\Union All.Outputs[Union All Output 1].Columns[acct_branch_desc]"
+                              name="acct_branch_desc" />
+                            <outputColumn
+                              refId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\Union All.Outputs[Union All Output 1].Columns[acct_region_id]"
+                              dataType="i4"
+                              lineageId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\Union All.Outputs[Union All Output 1].Columns[acct_region_id]"
+                              name="acct_region_id" />
+                            <outputColumn
+                              refId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\Union All.Outputs[Union All Output 1].Columns[acct_area_id]"
+                              dataType="i4"
+                              lineageId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\Union All.Outputs[Union All Output 1].Columns[acct_area_id]"
+                              name="acct_area_id" />
+                            <outputColumn
+                              refId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\Union All.Outputs[Union All Output 1].Columns[acct_branch_lat]"
+                              dataType="numeric"
+                              lineageId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\Union All.Outputs[Union All Output 1].Columns[acct_branch_lat]"
+                              name="acct_branch_lat"
+                              precision="16"
+                              scale="12" />
+                            <outputColumn
+                              refId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\Union All.Outputs[Union All Output 1].Columns[acct_branch_lon]"
+                              dataType="numeric"
+                              lineageId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\Union All.Outputs[Union All Output 1].Columns[acct_branch_lon]"
+                              name="acct_branch_lon"
+                              precision="16"
+                              scale="12" />
+                            <outputColumn
+                              refId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\Union All.Outputs[Union All Output 1].Columns[acct_branch_add_id]"
+                              dataType="i4"
+                              lineageId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\Union All.Outputs[Union All Output 1].Columns[acct_branch_add_id]"
+                              name="acct_branch_add_id" />
+                            <outputColumn
+                              refId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\Union All.Outputs[Union All Output 1].Columns[acct_branch_add_lat]"
+                              dataType="numeric"
+                              lineageId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\Union All.Outputs[Union All Output 1].Columns[acct_branch_add_lat]"
+                              name="acct_branch_add_lat"
+                              precision="16"
+                              scale="12" />
+                            <outputColumn
+                              refId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\Union All.Outputs[Union All Output 1].Columns[acct_branch_add_lon]"
+                              dataType="numeric"
+                              lineageId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\Union All.Outputs[Union All Output 1].Columns[acct_branch_add_lon]"
+                              name="acct_branch_add_lon"
+                              precision="16"
+                              scale="12" />
+                            <outputColumn
+                              refId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\Union All.Outputs[Union All Output 1].Columns[acct_branch_add_type]"
+                              codePage="1252"
+                              dataType="str"
+                              length="1"
+                              lineageId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\Union All.Outputs[Union All Output 1].Columns[acct_branch_add_type]"
+                              name="acct_branch_add_type" />
+                            <outputColumn
+                              refId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\Union All.Outputs[Union All Output 1].Columns[cust_id2]"
+                              dataType="i2"
+                              lineageId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\Union All.Outputs[Union All Output 1].Columns[cust_id2]"
+                              name="cust_id2" />
+                            <outputColumn
+                              refId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\Union All.Outputs[Union All Output 1].Columns[last_name]"
+                              codePage="1252"
+                              dataType="str"
+                              length="100"
+                              lineageId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\Union All.Outputs[Union All Output 1].Columns[last_name]"
+                              name="last_name" />
+                            <outputColumn
+                              refId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\Union All.Outputs[Union All Output 1].Columns[first_name]"
+                              codePage="1252"
+                              dataType="str"
+                              length="100"
+                              lineageId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\Union All.Outputs[Union All Output 1].Columns[first_name]"
+                              name="first_name" />
+                            <outputColumn
+                              refId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\Union All.Outputs[Union All Output 1].Columns[gender]"
+                              codePage="1252"
+                              dataType="str"
+                              length="1"
+                              lineageId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\Union All.Outputs[Union All Output 1].Columns[gender]"
+                              name="gender" />
+                            <outputColumn
+                              refId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\Union All.Outputs[Union All Output 1].Columns[birth_date]"
+                              dataType="dbDate"
+                              lineageId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\Union All.Outputs[Union All Output 1].Columns[birth_date]"
+                              name="birth_date" />
+                            <outputColumn
+                              refId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\Union All.Outputs[Union All Output 1].Columns[cust_since_date]"
+                              dataType="dbDate"
+                              lineageId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\Union All.Outputs[Union All Output 1].Columns[cust_since_date]"
+                              name="cust_since_date" />
+                            <outputColumn
+                              refId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\Union All.Outputs[Union All Output 1].Columns[pri_branch_id]"
+                              dataType="i2"
+                              lineageId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\Union All.Outputs[Union All Output 1].Columns[pri_branch_id]"
+                              name="pri_branch_id" />
+                            <outputColumn
+                              refId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\Union All.Outputs[Union All Output 1].Columns[cust_pri_branch_dist]"
+                              dataType="numeric"
+                              lineageId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\Union All.Outputs[Union All Output 1].Columns[cust_pri_branch_dist]"
+                              name="cust_pri_branch_dist"
+                              precision="7"
+                              scale="2" />
+                            <outputColumn
+                              refId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\Union All.Outputs[Union All Output 1].Columns[cust_lat]"
+                              dataType="numeric"
+                              lineageId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\Union All.Outputs[Union All Output 1].Columns[cust_lat]"
+                              name="cust_lat"
+                              precision="16"
+                              scale="12" />
+                            <outputColumn
+                              refId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\Union All.Outputs[Union All Output 1].Columns[cust_lon]"
+                              dataType="numeric"
+                              lineageId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\Union All.Outputs[Union All Output 1].Columns[cust_lon]"
+                              name="cust_lon"
+                              precision="16"
+                              scale="12" />
+                            <outputColumn
+                              refId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\Union All.Outputs[Union All Output 1].Columns[cust_rel_id]"
+                              dataType="i2"
+                              lineageId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\Union All.Outputs[Union All Output 1].Columns[cust_rel_id]"
+                              name="cust_rel_id" />
+                            <outputColumn
+                              refId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\Union All.Outputs[Union All Output 1].Columns[cust_add_id]"
+                              dataType="i4"
+                              lineageId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\Union All.Outputs[Union All Output 1].Columns[cust_add_id]"
+                              name="cust_add_id" />
+                            <outputColumn
+                              refId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\Union All.Outputs[Union All Output 1].Columns[cust_add_lat]"
+                              dataType="numeric"
+                              lineageId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\Union All.Outputs[Union All Output 1].Columns[cust_add_lat]"
+                              name="cust_add_lat"
+                              precision="16"
+                              scale="12" />
+                            <outputColumn
+                              refId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\Union All.Outputs[Union All Output 1].Columns[cust_add_lon]"
+                              dataType="numeric"
+                              lineageId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\Union All.Outputs[Union All Output 1].Columns[cust_add_lon]"
+                              name="cust_add_lon"
+                              precision="16"
+                              scale="12" />
+                            <outputColumn
+                              refId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\Union All.Outputs[Union All Output 1].Columns[cust_add_type]"
+                              codePage="1252"
+                              dataType="str"
+                              length="1"
+                              lineageId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\Union All.Outputs[Union All Output 1].Columns[cust_add_type]"
+                              name="cust_add_type" />
+                            <outputColumn
+                              refId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\Union All.Outputs[Union All Output 1].Columns[as_of_date]"
+                              dataType="dbDate"
+                              lineageId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\Union All.Outputs[Union All Output 1].Columns[as_of_date]"
+                              name="as_of_date" />
+                            <outputColumn
+                              refId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\Union All.Outputs[Union All Output 1].Columns[acct_id3]"
+                              dataType="i4"
+                              lineageId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\Union All.Outputs[Union All Output 1].Columns[acct_id3]"
+                              name="acct_id3" />
+                            <outputColumn
+                              refId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\Union All.Outputs[Union All Output 1].Columns[cur_bal]"
+                              dataType="numeric"
+                              lineageId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\Union All.Outputs[Union All Output 1].Columns[cur_bal]"
+                              name="cur_bal"
+                              precision="20"
+                              scale="4" />
+                          </outputColumns>
+                          <externalMetadataColumns />
+                        </output>
+                      </outputs>
+                    </component>
+                  </components>
+                  <paths>
+                    <path
+                      refId="Package\SEQ Package Logic\Test Connection Managers\DFNB3.Paths[OLE DB Source Output]"
+                      endId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\Union All.Inputs[Union All Input 1]"
+                      name="OLE DB Source Output"
+                      startId="Package\SEQ Package Logic\Test Connection Managers\DFNB3\DFNB3.Outputs[OLE DB Source Output]" />
+                  </paths>
+                </pipeline>
               </DTS:ObjectData>
             </DTS:Executable>
             <DTS:Executable
@@ -232,7 +2064,7 @@
           DTS:ExecutableType="Microsoft.ScriptTask"
           DTS:LocaleID="-1"
           DTS:ObjectName="Test Force Error"
-          DTS:ThreadHint="0">
+          DTS:ThreadHint="2">
           <DTS:Variables />
           <DTS:ObjectData>
             <ScriptProject
@@ -263,7 +2095,7 @@
               DTS:LocaleID="-1"
               DTS:ObjectName="Inicial Date Time"
               DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-              DTS:ThreadHint="2">
+              DTS:ThreadHint="0">
               <DTS:Variables />
               <DTS:ObjectData>
                 <SQLTask:SqlTaskData xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
@@ -728,75 +2560,6 @@ Imports System.Runtime.InteropServices
 <Assembly: AssemblyVersion("1.0.0.0")> 
 <Assembly: AssemblyFileVersion("1.0.0.0")> ]]></ProjectItem>
               <ProjectItem
-                Name="My Project\Settings.settings"
-                Encoding="UTF8"><![CDATA[<?xml version='1.0' encoding='iso-8859-1'?>
-<SettingsFile xmlns="uri:settings" CurrentProfile="(Default)" GeneratedClassNamespace="$safeprojectname" GeneratedClassName="MySettings">
-  <Profiles>
-    <Profile Name="(Default)" />
-  </Profiles>
-  <Settings />
-</SettingsFile>]]></ProjectItem>
-              <ProjectItem
-                Name="My Project\Settings.Designer.vb"
-                Encoding="UTF8"><![CDATA['------------------------------------------------------------------------------
-' <autogenerated>
-'     This code was generated by a tool.
-'
-'     Changes to this file may cause incorrect behavior and will be lost if
-'     the code is regenerated.
-' </autogenerated>
-'------------------------------------------------------------------------------
-
-Option Strict Off
-Option Explicit On
-
-
-
-Partial Friend NotInheritable Class MySettings
-    Inherits System.Configuration.ApplicationSettingsBase
-
-    Private Shared m_Value As MySettings
-
-    Private Shared m_SyncObject As Object = New Object
-
-    <System.Diagnostics.DebuggerNonUserCode()> _
-    Public Shared ReadOnly Property Value() As MySettings
-        Get
-            If (MySettings.m_Value Is Nothing) Then
-                System.Threading.Monitor.Enter(MySettings.m_SyncObject)
-                If (MySettings.m_Value Is Nothing) Then
-                    Try
-                        MySettings.m_Value = New MySettings
-                    Finally
-                        System.Threading.Monitor.Exit(MySettings.m_SyncObject)
-                    End Try
-                End If
-            End If
-            Return MySettings.m_Value
-        End Get
-    End Property
-End Class]]></ProjectItem>
-              <ProjectItem
-                Name="Project"
-                Encoding="UTF16LE"><![CDATA[<?xml version="1.0" encoding="UTF-16" standalone="yes"?>
-<c:Project xmlns:c="http://schemas.microsoft.com/codeprojectml/2010/08/main" xmlns:msb="http://schemas.microsoft.com/developer/msbuild/2003" runtimeVersion="3.0" schemaVersion="1.0">
-  <msb:PropertyGroup>
-    <msb:Language>msBuild</msb:Language>
-    <msb:CodeName>ST_87903ea43c6e435f97a15367051345d3</msb:CodeName>
-    <msb:DisplayName>ST_87903ea43c6e435f97a15367051345d3</msb:DisplayName>
-    <msb:ProjectId>{A86D7D48-E9F6-4CCB-B014-E5E776BF9AC9}</msb:ProjectId>
-  </msb:PropertyGroup>
-  <msb:ItemGroup>
-    <msb:Project Include="ST_87903ea43c6e435f97a15367051345d3.vbproj" />
-    <msb:File Include="My Project\AssemblyInfo.vb" />
-    <msb:File Include="ScriptMain.vb" />
-    <msb:File Include="My Project\Resources.resx" />
-    <msb:File Include="My Project\Resources.Designer.vb" />
-    <msb:File Include="My Project\Settings.settings" />
-    <msb:File Include="My Project\Settings.Designer.vb" />
-  </msb:ItemGroup>
-</c:Project>]]></ProjectItem>
-              <ProjectItem
                 Name="ScriptMain.vb"
                 Encoding="UTF8"><![CDATA[#Region "Help:  Introduction to the script task"
 'The Script Task allows you to perform virtually any operation that can be accomplished in
@@ -906,6 +2669,75 @@ Partial Public Class ScriptMain
 #End Region
 
 End Class]]></ProjectItem>
+              <ProjectItem
+                Name="My Project\Settings.settings"
+                Encoding="UTF8"><![CDATA[<?xml version='1.0' encoding='iso-8859-1'?>
+<SettingsFile xmlns="uri:settings" CurrentProfile="(Default)" GeneratedClassNamespace="$safeprojectname" GeneratedClassName="MySettings">
+  <Profiles>
+    <Profile Name="(Default)" />
+  </Profiles>
+  <Settings />
+</SettingsFile>]]></ProjectItem>
+              <ProjectItem
+                Name="My Project\Settings.Designer.vb"
+                Encoding="UTF8"><![CDATA['------------------------------------------------------------------------------
+' <autogenerated>
+'     This code was generated by a tool.
+'
+'     Changes to this file may cause incorrect behavior and will be lost if
+'     the code is regenerated.
+' </autogenerated>
+'------------------------------------------------------------------------------
+
+Option Strict Off
+Option Explicit On
+
+
+
+Partial Friend NotInheritable Class MySettings
+    Inherits System.Configuration.ApplicationSettingsBase
+
+    Private Shared m_Value As MySettings
+
+    Private Shared m_SyncObject As Object = New Object
+
+    <System.Diagnostics.DebuggerNonUserCode()> _
+    Public Shared ReadOnly Property Value() As MySettings
+        Get
+            If (MySettings.m_Value Is Nothing) Then
+                System.Threading.Monitor.Enter(MySettings.m_SyncObject)
+                If (MySettings.m_Value Is Nothing) Then
+                    Try
+                        MySettings.m_Value = New MySettings
+                    Finally
+                        System.Threading.Monitor.Exit(MySettings.m_SyncObject)
+                    End Try
+                End If
+            End If
+            Return MySettings.m_Value
+        End Get
+    End Property
+End Class]]></ProjectItem>
+              <ProjectItem
+                Name="Project"
+                Encoding="UTF16LE"><![CDATA[<?xml version="1.0" encoding="UTF-16" standalone="yes"?>
+<c:Project xmlns:c="http://schemas.microsoft.com/codeprojectml/2010/08/main" xmlns:msb="http://schemas.microsoft.com/developer/msbuild/2003" runtimeVersion="3.0" schemaVersion="1.0">
+  <msb:PropertyGroup>
+    <msb:Language>msBuild</msb:Language>
+    <msb:CodeName>ST_87903ea43c6e435f97a15367051345d3</msb:CodeName>
+    <msb:DisplayName>ST_87903ea43c6e435f97a15367051345d3</msb:DisplayName>
+    <msb:ProjectId>{A86D7D48-E9F6-4CCB-B014-E5E776BF9AC9}</msb:ProjectId>
+  </msb:PropertyGroup>
+  <msb:ItemGroup>
+    <msb:Project Include="ST_87903ea43c6e435f97a15367051345d3.vbproj" />
+    <msb:File Include="My Project\AssemblyInfo.vb" />
+    <msb:File Include="ScriptMain.vb" />
+    <msb:File Include="My Project\Resources.resx" />
+    <msb:File Include="My Project\Resources.Designer.vb" />
+    <msb:File Include="My Project\Settings.settings" />
+    <msb:File Include="My Project\Settings.Designer.vb" />
+  </msb:ItemGroup>
+</c:Project>]]></ProjectItem>
               <ProjectItem
                 Name="My Project\Resources.resx"
                 Encoding="UTF8"><![CDATA[<?xml version="1.0" encoding="utf-8"?>
@@ -1282,89 +3114,77 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</BinaryItem>
         <ContainerLayout
           HeaderHeight="43"
           IsExpanded="True"
-          PanelSize="204.8,55.2"
-          Size="204.8,98.4"
+          PanelSize="205,55"
+          Size="205,98"
           Id="Package\Documentation"
-          TopLeft="186.6666592492,486.720003868103" />
+          TopLeft="236.25,355" />
         <NodeLayout
-          Size="154.4,41.6"
+          Size="160,42"
           Id="Package\LogPackageEnd"
-          TopLeft="647.366642162536,526.300001983643" />
+          TopLeft="508,445.5" />
         <NodeLayout
-          Size="112.8,41.6"
+          Size="115,42"
           Id="Package\SEQ Package Logic\Test Connection Managers\DFNB3"
-          TopLeft="5.46666505071858,19.5200014712016" />
+          TopLeft="5.5,5.5" />
         <NodeLayout
-          Size="100.8,41.6"
+          Size="103,42"
           Id="Package\SEQ Package Logic\Test Connection Managers\EXM"
-          TopLeft="127.333327319887,22.6133345620897" />
+          TopLeft="179.5,5.5" />
         <NodeLayout
-          Size="129.6,41.6"
+          Size="133,42"
           Id="Package\SEQ Package Logic\Test Connection Managers\SSIS_PDS"
-          TopLeft="270.666654957666,23.0933344959683" />
+          TopLeft="341,5.5" />
         <ContainerLayout
           HeaderHeight="43"
           IsExpanded="True"
-          PanelSize="443.2,149.6"
-          Size="443.2,192.8"
+          PanelSize="476,103"
+          Size="476,146"
           Id="Package\SEQ Package Logic\Test Connection Managers"
-          TopLeft="18.3999990463257,12.8000010744731" />
+          TopLeft="5.5,5.5" />
         <NodeLayout
-          Size="153.6,41.6"
+          Size="154,42"
           Id="Package\SEQ Package Logic\Test Force Error"
-          TopLeft="467.057122358822,89.1276200992644" />
+          TopLeft="542.5,57.4999999999999" />
         <NodeLayout
-          Size="156,41.6"
+          Size="156,42"
           Id="Package\SEQ Package Logic\Test Log Variable\Inicial Date Time"
-          TopLeft="41.7523538937655,26.8952394806393" />
+          TopLeft="5.5,5.5" />
         <NodeLayout
-          Size="168,41.6"
+          Size="168,42"
           Id="Package\SEQ Package Logic\Test Log Variable\Updated Date Time"
-          TopLeft="265.561868809898,24.9142870839437" />
+          TopLeft="222.5,5.5" />
         <ContainerLayout
           HeaderHeight="43"
           IsExpanded="True"
-          PanelSize="449.6,147.2"
-          Size="449.6,190.4"
+          PanelSize="396,103"
+          Size="396,146"
           Id="Package\SEQ Package Logic\Test Log Variable"
-          TopLeft="631.842830215751,22.5980955702767" />
+          TopLeft="757.5,5.49999999999989" />
         <ContainerLayout
           HeaderHeight="43"
           IsExpanded="True"
-          PanelSize="1086.4,312.8"
-          Size="1086.4,356"
+          PanelSize="1159,180"
+          Size="1159,223"
           Id="Package\SEQ Package Logic"
-          TopLeft="98.2619010758781,89.0733331900702" />
+          TopLeft="8.5,107.5" />
         <NodeLayout
-          Size="181.6,41.6"
+          Size="182,42"
           Id="Package\SQL LogPackageStart"
-          TopLeft="89.0999971389772,5.49999999999995" />
+          TopLeft="494,5.49999999999989" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint]"
-          TopLeft="179.899997138977,47.1">
+          TopLeft="586.5,47.4999999999999">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="461.561903936901,41.9733331900703"
+              EndConnector="0,60.0000000000001"
               Start="0,0"
-              End="461.561903936901,34.4733331900703">
+              End="0,52.5000000000001">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,16.9866665950351" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,16.9866665950351"
-                    Point2="0,20.9866665950351"
-                    Point3="4,20.9866665950351" />
-                  <mssgle:LineSegment
-                    End="457.561903936901,20.9866665950351" />
-                  <mssgle:CubicBezierSegment
-                    Point1="457.561903936901,20.9866665950351"
-                    Point2="461.561903936901,20.9866665950351"
-                    Point3="461.561903936901,24.9866665950351" />
-                  <mssgle:LineSegment
-                    End="461.561903936901,34.4733331900703" />
+                    End="0,52.5000000000001" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -1375,30 +3195,18 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</BinaryItem>
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 1]"
-          TopLeft="641.461901075878,445.07333319007">
+          TopLeft="588,330.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="83.1047410866579,81.2266687935725"
+              EndConnector="0,115"
               Start="0,0"
-              End="83.1047410866579,73.7266687935725">
+              End="0,107.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,36.6133343967862" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,36.6133343967862"
-                    Point2="0,40.6133343967862"
-                    Point3="4,40.6133343967862" />
-                  <mssgle:LineSegment
-                    End="79.1047410866579,40.6133343967862" />
-                  <mssgle:CubicBezierSegment
-                    Point1="79.1047410866579,40.6133343967862"
-                    Point2="83.1047410866579,40.6133343967862"
-                    Point3="83.1047410866579,44.6133343967862" />
-                  <mssgle:LineSegment
-                    End="83.1047410866579,73.7266687935725" />
+                    End="0,107.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -1416,7 +3224,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</BinaryItem>
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
         <NodeLayout
-          Size="164.8,41.6"
+          Size="165,42"
           Id="Package.EventHandlers[OnError]\Execute SQL Task"
           TopLeft="229.6,80" />
       </GraphLayout>
@@ -1426,15 +3234,15 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</BinaryItem>
     design-time-name="Package.EventHandlers[OnVariableValueChanged]">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
-        <NodeLayout
-          Size="130.4,41.6"
-          Id="Package.EventHandlers[OnVariableValueChanged]\Script Task"
-          TopLeft="98.4,32" />
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="203.2,41.6"
           Id="Package.EventHandlers[OnVariableValueChanged]\LogVariableValueChanged"
           TopLeft="126.4,152" />
+        <NodeLayout
+          Size="130.4,41.6"
+          Id="Package.EventHandlers[OnVariableValueChanged]\Script Task"
+          TopLeft="98.4,32" />
         <EdgeLayout
           Id="Package.EventHandlers[OnVariableValueChanged].PrecedenceConstraints[Constraint]"
           TopLeft="163.6,73.6">
@@ -1466,11 +3274,64 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</BinaryItem>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </DtsEventHandler>
+  <TaskHost
+    design-time-name="Package\SEQ Package Logic\Test Connection Managers\DFNB3">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="115,42"
+          Id="Package\SEQ Package Logic\Test Connection Managers\DFNB3\DFNB3"
+          TopLeft="9.50000000000001,5.5" />
+        <NodeLayout
+          Size="123,42"
+          Id="Package\SEQ Package Logic\Test Connection Managers\DFNB3\Union All"
+          TopLeft="5.50000000000001,107.5" />
+        <EdgeLayout
+          Id="Package\SEQ Package Logic\Test Connection Managers\DFNB3.Paths[OLE DB Source Output]"
+          TopLeft="67,47.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\SEQ Package Logic\Test Connection Managers\DFNB3\DFNB3">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
 </Objects>]]></DTS:DesignTimeProperties>
 </DTS:Executable>
